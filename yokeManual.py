@@ -191,12 +191,12 @@ def coilsOctagon(xRadius, yRadius, cornerRadius, thickness, zThickness, coilSegm
     for i in range(8):
         segmentPivotVecList.append(Vector2D.rhoTheta(rho=rhoCycle[i % (len(rhoCycle))] - thickness - gapThickness, theta=(i/4.0)*np.pi))
         segmentParallelVecList.append(Vector2D.rhoTheta(rho=1.0, theta=((i+2.0)/4.0)*np.pi))
-    # _, curveList = manualNGon(segmentPivotVecList, segmentParallelVecList, zThickness/2.0 + gapThickness)
+    _, curveList = manualNGon(segmentPivotVecList, segmentParallelVecList, zThickness/2.0 + gapThickness)
     #
     meshSize = (thickness+2.0*gapThickness)/cellsPerThickness
     for coilSegmentIndex in coilSegmentIndexList:
-        cubitReset()
-        _, curveList = manualNGon(segmentPivotVecList, segmentParallelVecList, zThickness/2.0 + gapThickness)
+        # cubitReset()
+        # _, curveList = manualNGon(segmentPivotVecList, segmentParallelVecList, zThickness/2.0 + gapThickness)
         #
         coilBodyList = []
         coilBlockID = cubit.get_next_block_id()

@@ -108,7 +108,7 @@
          1.0
 
    # Excitation name
-   coil2
+   coil1
       # Excitation type
       Coil2D
       # Background name
@@ -117,13 +117,13 @@
          # Coil Mesh Format:
          universal
          #Coil Mesh File Name:
-         coil2.unv
+         coil1.unv
          # Coil Mesh Units:
          inch
          # Starting cell group name:
-         coil2insideTerminal
+         coil1insideTerminal
          # Last cell group name:
-         coil2topTerminal
+         coil1topTerminal
          # Favor 'fast' or 'adaptive' integrators
          adaptive
          # Current type (electric,magnetic)
@@ -180,7 +180,7 @@
          1.0
 
    # Excitation name
-   coil6
+   coil5
       # Excitation type
       Coil2D
       # Background name
@@ -189,13 +189,13 @@
          # Coil Mesh Format:
          universal
          #Coil Mesh File Name:
-         coil6.unv
+         coil5.unv
          # Coil Mesh Units:
          inch
          # Starting cell group name:
-         coil6topTerminal
+         coil5topTerminal
          # Last cell group name:
-         coil6insideTerminal
+         coil5insideTerminal
          # Favor 'fast' or 'adaptive' integrators
          adaptive
          # Current type (electric,magnetic)
@@ -294,7 +294,7 @@
       # Number of Excitations
       6
       # Excitation names
-      coil0  coil2  coil3  coil4  coil6  coil7
+      coil0  coil1  coil3  coil4  coil5  coil7
       # Number of Probes
       3
       # Probe names
@@ -320,7 +320,7 @@
    none
 
 # Control Flags
-$SET_NUM_THREADS_TO:8
+$SET_NUM_THREADS_TO:32
 $MESH_STATISTICS:FULL
 $ADAPTIVE_INTEGRATOR_MAX_SUBDOMAINS:4096
 $GEMF_ADAPTIVE_INTEGRATOR_ZERO_TOLERANCE:1e-10

@@ -229,7 +229,7 @@
 
 ##### section : probe #####
    # Number of probes
-   3
+   4
 
    # Probe name
    YokeMag
@@ -246,8 +246,6 @@
       TestGrid
       # Test Grid Order
       1
-	  # Options
-      &option vtk
 
    # Probe name
    PipeMag
@@ -258,6 +256,19 @@
 	   # group name
 	   &1
 	   pipeSample
+      # Polarization current type
+      magnetic
+      # Grid Type ('SystemTestGrid', 'CellNodes', 'TestGrid'; 'TestGrid' requires a grid order)
+      TestGrid
+      # Test Grid Order
+      1
+
+   # Probe name
+   VTKProbe
+      # Probe type
+      CurrentPolarization
+      # Background name
+      DefaultBackground
       # Polarization current type
       magnetic
       # Grid Type ('SystemTestGrid', 'CellNodes', 'TestGrid'; 'TestGrid' requires a grid order)
@@ -296,9 +307,9 @@
       # Excitation names
       coil0  coil1  coil3  coil4  coil5  coil7
       # Number of Probes
-      3
+      4
       # Probe names
-      YokeMag  PipeMag  PipeCenterH
+      YokeMag  PipeMag  VTKProbe  PipeCenterH
 
 ##### section : boundary condition #####
    # Number of boundary conditions
@@ -313,7 +324,7 @@
 
    # Use saved DOF file : no = do nothing, write = fill/solve normally, write dofs.txt file, 
    #                    : read = don't fill/solve, read dofs.txt file
-   write
+   read
 
 ######  section:  Non-linear solver (leave blank, if none) ####
    # non-linear solver type  (stepped, imi, fmi, or none):

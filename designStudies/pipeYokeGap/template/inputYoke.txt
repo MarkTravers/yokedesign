@@ -1,6 +1,6 @@
 ##### section : output #####
    # Output file path
-   ./magstromOutput/
+   ./
 
    # Output job name ("none" for no job name)
    yoke
@@ -13,7 +13,7 @@
    Universal
 
    # Mesh file name
-   yokeWithPipe.unv
+   yokeCollarPipe.unv
 
    # Mesh units
    inch
@@ -32,7 +32,7 @@
 
 ##### section : material #####
    # Number of materials
-   3
+   4
 
    # Material name
    DefaultMaterial
@@ -61,6 +61,15 @@
       # epsilon_r, mu_r
       1.0 67.0
 
+   # Material name
+   CollarMaterial
+      # Material type
+      IsotropicLossless
+      # Group name
+      collar
+      # epsilon_r, mu_r
+      1.0 1000.0
+
 ##### section : Background #####
    # Number of backgrounds
    1
@@ -81,7 +90,7 @@
 ##### section : excitation #####
 
    # Number of excitations
-   6
+   10
 
    # Excitation name
    coil0
@@ -136,7 +145,7 @@
          12000
 
    # Excitation name
-   coil3
+   coil2
       # Excitation type
       Coil2D
       # Background name
@@ -145,39 +154,13 @@
          # Coil Mesh Format:
          universal
          #Coil Mesh File Name:
-         coil3.unv
+         coil2.unv
          # Coil Mesh Units:
          inch
          # Starting cell group name:
-         coil3insideTerminal
+         coil2topTerminal
          # Last cell group name:
-         coil3topTerminal
-         # Favor 'fast' or 'adaptive' integrators
-         adaptive
-         # Current type (electric,magnetic)
-         electric
-         # option to set amplitude in A-turns per meter
-         &option amp_turns_per_meter
-         # Coil Current Amplitude (A-turns/meter):
-         12000
-
-   # Excitation name
-   coil4
-      # Excitation type
-      Coil2D
-      # Background name
-      DefaultBackground
-      # Coil Mesh Parameters:
-         # Coil Mesh Format:
-         universal
-         #Coil Mesh File Name:
-         coil4.unv
-         # Coil Mesh Units:
-         inch
-         # Starting cell group name:
-         coil4insideTerminal
-         # Last cell group name:
-         coil4topTerminal
+         coil2insideTerminal
          # Favor 'fast' or 'adaptive' integrators
          adaptive
          # Current type (electric,magnetic)
@@ -203,7 +186,33 @@
          # Starting cell group name:
          coil5insideTerminal
          # Last cell group name:
-         coil5topTerminal 
+         coil5topTerminal
+         # Favor 'fast' or 'adaptive' integrators
+         adaptive
+         # Current type (electric,magnetic)
+         electric
+         # option to set amplitude in A-turns per meter
+         &option amp_turns_per_meter
+         # Coil Current Amplitude (A-turns/meter):
+         12000
+
+   # Excitation name
+   coil6
+      # Excitation type
+      Coil2D
+      # Background name
+      DefaultBackground
+      # Coil Mesh Parameters:
+         # Coil Mesh Format:
+         universal
+         #Coil Mesh File Name:
+         coil6.unv
+         # Coil Mesh Units:
+         inch
+         # Starting cell group name:
+         coil6insideTerminal
+         # Last cell group name:
+         coil6topTerminal 
          # Favor 'fast' or 'adaptive' integrators
          adaptive
          # Current type (electric,magnetic)
@@ -227,9 +236,113 @@
          # Coil Mesh Units:
          inch
          # Starting cell group name:
-         coil7topTerminal
-         # Last cell group name:
          coil7insideTerminal
+         # Last cell group name:
+         coil7topTerminal 
+         # Favor 'fast' or 'adaptive' integrators
+         adaptive
+         # Current type (electric,magnetic)
+         electric
+         # option to set amplitude in A-turns per meter
+         &option amp_turns_per_meter
+         # Coil Current Amplitude (A-turns/meter):
+         12000
+
+   # Excitation name
+   coil8
+      # Excitation type
+      Coil2D
+      # Background name
+      DefaultBackground
+      # Coil Mesh Parameters:
+         # Coil Mesh Format:
+         universal
+         #Coil Mesh File Name:
+         coil8.unv
+         # Coil Mesh Units:
+         inch
+         # Starting cell group name:
+         coil8insideTerminal
+         # Last cell group name:
+         coil8topTerminal 
+         # Favor 'fast' or 'adaptive' integrators
+         adaptive
+         # Current type (electric,magnetic)
+         electric
+         # option to set amplitude in A-turns per meter
+         &option amp_turns_per_meter
+         # Coil Current Amplitude (A-turns/meter):
+         12000
+
+   # Excitation name
+   coil9
+      # Excitation type
+      Coil2D
+      # Background name
+      DefaultBackground
+      # Coil Mesh Parameters:
+         # Coil Mesh Format:
+         universal
+         #Coil Mesh File Name:
+         coil9.unv
+         # Coil Mesh Units:
+         inch
+         # Starting cell group name:
+         coil9insideTerminal
+         # Last cell group name:
+         coil9topTerminal 
+         # Favor 'fast' or 'adaptive' integrators
+         adaptive
+         # Current type (electric,magnetic)
+         electric
+         # option to set amplitude in A-turns per meter
+         &option amp_turns_per_meter
+         # Coil Current Amplitude (A-turns/meter):
+         12000
+
+   # Excitation name
+   coil12
+      # Excitation type
+      Coil2D
+      # Background name
+      DefaultBackground
+      # Coil Mesh Parameters:
+         # Coil Mesh Format:
+         universal
+         #Coil Mesh File Name:
+         coil12.unv
+         # Coil Mesh Units:
+         inch
+         # Starting cell group name:
+         coil12topTerminal
+         # Last cell group name:
+         coil12insideTerminal
+         # Favor 'fast' or 'adaptive' integrators
+         adaptive
+         # Current type (electric,magnetic)
+         electric
+         # option to set amplitude in A-turns per meter
+         &option amp_turns_per_meter
+         # Coil Current Amplitude (A-turns/meter):
+         12000
+
+   # Excitation name
+   coil13
+      # Excitation type
+      Coil2D
+      # Background name
+      DefaultBackground
+      # Coil Mesh Parameters:
+         # Coil Mesh Format:
+         universal
+         #Coil Mesh File Name:
+         coil13.unv
+         # Coil Mesh Units:
+         inch
+         # Starting cell group name:
+         coil13topTerminal
+         # Last cell group name:
+         coil13insideTerminal
          # Favor 'fast' or 'adaptive' integrators
          adaptive
          # Current type (electric,magnetic)
@@ -319,9 +432,9 @@
    # SimulationGroup name
    grp
       # Number of Excitations
-      6
+      10
       # Excitation names
-      coil0  coil1  coil3  coil4  coil5  coil7
+      coil0  coil1  coil2  coil5  coil6  coil7  coil8  coil9  coil12  coil13
       # Number of Probes
       4
       # Probe names
@@ -347,7 +460,7 @@
    none
 
 # Control Flags
-$SET_NUM_THREADS_TO:32
+$SET_NUM_THREADS_TO:8
 $MESH_STATISTICS:FULL
 $ADAPTIVE_INTEGRATOR_MAX_SUBDOMAINS:4096
 $GEMF_ADAPTIVE_INTEGRATOR_ZERO_TOLERANCE:1e-10

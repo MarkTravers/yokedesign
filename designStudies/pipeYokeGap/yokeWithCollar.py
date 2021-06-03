@@ -1,4 +1,3 @@
-#!python
 #!python2
 import sys
 sys.path.append('C:\\Python27\\Lib\\site-packages')
@@ -112,7 +111,7 @@ def manualNGon(segmentPivotVecList, segmentParallelVecList, zOffset=0.0):
         curveList.append(cubit.create_curve(vertex1, vertex2))
     return nGonVertexList, curveList
 #
-def yokeOctagonWithPipe(xRadius, yRadius, cornerRadius, thickness, zThickness, pipeLength, pipeOR, pipeIR, cellsPerThickness, unvFD=''):
+def yokeWithPipe(xRadius, yRadius, cornerRadius, thickness, zThickness, pipeLength, pipeOR, pipeIR, yokeCollarGap, collarThickness, yokePipeGap, pipeCoildGap, cellsPerThickness, unvFD=''):
     rhoCycle = [xRadius, cornerRadius, yRadius, cornerRadius]
     #
     # Create outer n-gon
@@ -150,10 +149,30 @@ def yokeOctagonWithPipe(xRadius, yRadius, cornerRadius, thickness, zThickness, p
         cubit.cmd('sweep surface %d vector 0 0 -1 distance %f' % (surfaceID, zThickness))
         cubit.cmd('block %d body %d' % (yokeBlockID, surfaceBody.id()))
     #
-    # Cut hole in yoke for pipe
-    cutterBody = cubit.cylinder(pipeLength, pipeOR, pipeOR, pipeOR)
+    # Cut hole in bottom side of yoke for pipe (no collar)
+    holeRadius = pipeOR + yokePipeGap
+    cutterBody = cubit.cylinder(pipeLength, holeRadius, holeRadius, holeRadius)
     cubit.cmd('rotate body %d angle 90 about x include_merged' % cutterBody.id())
+    cubit.move(cutterBody, (0.0, -pipeLength/2.0, 0.0))
     cubit.subtract([cutterBody], surfaceBodyList)
+    #
+    # Cut hole in top side of yoke for collar
+    holeRadius = pipeOR + yokeCollarGap + collarThickness + yokePipeGap
+    cutterBody = cubit.cylinder(pipeLength, holeRadius, holeRadius, holeRadius)
+    cubit.cmd('rotate body %d angle 90 about x include_merged' % cutterBody.id())
+    cubit.move(cutterBody, (0.0, pipeLength/2.0, 0.0))
+    cubit.subtract([cutterBody], surfaceBodyList)
+    #
+    # Create collar
+    collarOR = pipeOR + yokePipeGap + collarThickness
+    collarIR = pipeOR + yokePipeGap
+    collarBody = cubit.cylinder(thickness, collarOR, collarOR, collarOR)
+    cutterBody = cubit.cylinder(thickness, collarIR, collarIR, collarIR)
+    cubit.subtract([cutterBody], [collarBody])
+    cubit.cmd('rotate body %d angle 90 about x include_merged' % collarBody.id())
+    cubit.move(collarBody, (0.0, yRadius-thickness/2.0, 0.0))
+    collarBlockID = cubit.get_next_block_id()
+    cubit.cmd('block %d body %d' % (collarBlockID, collarBody.id()))
     #
     # Create pipe
     pipeBody = cubit.cylinder(pipeLength, pipeOR, pipeOR, pipeOR)
@@ -163,99 +182,102 @@ def yokeOctagonWithPipe(xRadius, yRadius, cornerRadius, thickness, zThickness, p
     pipeBlockID = cubit.get_next_block_id()
     cubit.cmd('block %d body %d' % (pipeBlockID, pipeBody.id()))
     #
-    # Cut yoke along cardinal axes to help meshing
-    cubit.cmd('webcut volume all in block %d %d with plane xplane offset %f noimprint nomerge' % (yokeBlockID, pipeBlockID, 0.0))
-    cubit.cmd('webcut volume all in block %d %d with plane zplane offset %f noimprint nomerge' % (yokeBlockID, pipeBlockID, 0.0))
+    # Cut yoke, collar, and pipe along planes to help meshing
+    cubit.cmd('webcut volume all in block %d %d %d with plane xplane offset %f noimprint nomerge' % (yokeBlockID, pipeBlockID, collarBlockID, 0.0))
+    cubit.cmd('webcut volume all in block %d %d %d with plane zplane offset %f noimprint nomerge' % (yokeBlockID, pipeBlockID, collarBlockID, 0.0))
+    cubit.cmd('webcut volume all in block %d with plane xplane offset %f noimprint nomerge' % (yokeBlockID, pipeCoilGap))
+    cubit.cmd('webcut volume all in block %d with plane xplane offset %f noimprint nomerge' % (yokeBlockID, -pipeCoilGap))
     #
     # Mesh yoke
     meshSize = thickness/cellsPerThickness
-    cubit.cmd('imprint volume all in block %d %d' % (yokeBlockID, pipeBlockID))
-    cubit.cmd('merge volume all in block %d %d' % (yokeBlockID, pipeBlockID))
-    cubit.cmd('volume in block %d %d size %f' % (yokeBlockID, pipeBlockID, meshSize))
-    cubit.cmd('volume all in block %d %d scheme auto' % (yokeBlockID, pipeBlockID))
-    cubit.cmd('mesh volume all in block %d %d' % (yokeBlockID, pipeBlockID))
+    cubit.cmd('imprint volume all in block %d %d %d' % (yokeBlockID, pipeBlockID, collarBlockID))
+    cubit.cmd('merge volume all in block %d %d %d' % (yokeBlockID, pipeBlockID, collarBlockID))
+    cubit.cmd('volume in block %d %d %d size %f' % (yokeBlockID, pipeBlockID, collarBlockID, meshSize))
+    cubit.cmd('volume all in block %d %d %d scheme auto' % (yokeBlockID, pipeBlockID, collarBlockID))
+    cubit.cmd('mesh volume all in block %d %d %d' % (yokeBlockID, pipeBlockID, collarBlockID))
     #
     # Export mesh
     cubit.cmd('group "%s" add volume all in block %d' % ('yoke', yokeBlockID))
     cubit.cmd('group "%s" add volume all in block %d' % ('pipeSample', pipeBlockID))
+    cubit.cmd('group "%s" add volume all in block %d' % ('collar', collarBlockID))
     exportBlockID = cubit.get_next_block_id()
-    cubit.cmd('block %d %s %s' % (exportBlockID, 'yoke', 'pipeSample'))
+    cubit.cmd('block %d %s %s %s' % (exportBlockID, 'yoke', 'pipeSample', 'collar'))
     cubit.cmd('block %d element type HEX27' % exportBlockID)
-    cubit.cmd('export ideas "%s" block %d overwrite' % (unvFD + 'yokeWithPipe.unv', exportBlockID))
+    cubit.cmd('export ideas "%s" block %d overwrite' % (unvFD + 'yokeCollarPipe.unv', exportBlockID))
 #
 #
-def coilsOctagon(xRadius, yRadius, cornerRadius, thickness, zThickness, coilSegmentIndexList, gapThickness, splitCoilOffset, cellsPerThickness, unvFD, resetCubitForEachCoil=False):
+def coilsOctagon(xRadius, yRadius, cornerRadius, thickness, zThickness, coilSegmentIndexList, coilGap, splitCoilOffset, cellsPerThickness, unvFD, resetCubitForEachCoil=False):
     # Create inner n-gon
     segmentPivotVecList = []
     segmentParallelVecList = []
     # Right Side
-    segmentPivotVecList.append(Vector2D.rhoTheta(rho=xRadius-thickness-gapThickness, theta=0.0))
+    segmentPivotVecList.append(Vector2D.rhoTheta(rho=xRadius-thickness-coilGap, theta=0.0))
     segmentParallelVecList.append(Vector2D.rhoTheta(rho=1.0, theta=np.pi/2.0))
     # Top right corner
-    segmentPivotVecList.append(Vector2D.rhoTheta(rho=cornerRadius-thickness-gapThickness, theta=np.pi/4.0))
+    segmentPivotVecList.append(Vector2D.rhoTheta(rho=cornerRadius-thickness-coilGap, theta=np.pi/4.0))
     segmentParallelVecList.append(Vector2D.rhoTheta(rho=1.0, theta=3.0*np.pi/4.0))
     # Top right side
-    segmentPivotVecList.append(Vector2D.rhoTheta(rho=yRadius-thickness-gapThickness, theta=np.pi/2.0))
+    segmentPivotVecList.append(Vector2D.rhoTheta(rho=yRadius-thickness-coilGap, theta=np.pi/2.0))
     segmentParallelVecList.append(Vector2D.rhoTheta(rho=1.0, theta=np.pi))
     # Top right coil edge
-    segmentPivotVecList.append(Vector2D.xy(x=splitCoilOffset, y=yRadius-thickness-gapThickness))
+    segmentPivotVecList.append(Vector2D.xy(x=splitCoilOffset, y=yRadius-thickness-coilGap))
     segmentParallelVecList.append(Vector2D.rhoTheta(rho=1.0, theta=5.0*np.pi/4.0))
     # Top left coil edge
-    segmentPivotVecList.append(Vector2D.xy(x=-splitCoilOffset, y=yRadius-thickness-gapThickness))
+    segmentPivotVecList.append(Vector2D.xy(x=-splitCoilOffset, y=yRadius-thickness-coilGap))
     segmentParallelVecList.append(Vector2D.rhoTheta(rho=1.0, theta=3.0*np.pi/4.0))
     # Top left side
-    segmentPivotVecList.append(Vector2D.rhoTheta(rho=yRadius-thickness-gapThickness, theta=np.pi/2.0))
+    segmentPivotVecList.append(Vector2D.rhoTheta(rho=yRadius-thickness-coilGap, theta=np.pi/2.0))
     segmentParallelVecList.append(Vector2D.rhoTheta(rho=1.0, theta=np.pi))
     # Top Left Corner
-    segmentPivotVecList.append(Vector2D.rhoTheta(rho=cornerRadius-thickness-gapThickness, theta=3.0*np.pi/4.0))
+    segmentPivotVecList.append(Vector2D.rhoTheta(rho=cornerRadius-thickness-coilGap, theta=3.0*np.pi/4.0))
     segmentParallelVecList.append(Vector2D.rhoTheta(rho=1.0, theta=5.0*np.pi/4.0))
     # Left Side
-    segmentPivotVecList.append(Vector2D.rhoTheta(rho=xRadius-thickness-gapThickness, theta=np.pi))
+    segmentPivotVecList.append(Vector2D.rhoTheta(rho=xRadius-thickness-coilGap, theta=np.pi))
     segmentParallelVecList.append(Vector2D.rhoTheta(rho=1.0, theta=3.0*np.pi/2.0))
     # Bottom left corner
-    segmentPivotVecList.append(Vector2D.rhoTheta(rho=cornerRadius-thickness-gapThickness, theta=5.0*np.pi/4.0))
+    segmentPivotVecList.append(Vector2D.rhoTheta(rho=cornerRadius-thickness-coilGap, theta=5.0*np.pi/4.0))
     segmentParallelVecList.append(Vector2D.rhoTheta(rho=1.0, theta=7.0*np.pi/4.0))
     # Bottom left side
-    segmentPivotVecList.append(Vector2D.rhoTheta(rho=yRadius-thickness-gapThickness, theta=3.0*np.pi/2.0))
+    segmentPivotVecList.append(Vector2D.rhoTheta(rho=yRadius-thickness-coilGap, theta=3.0*np.pi/2.0))
     segmentParallelVecList.append(Vector2D.rhoTheta(rho=1.0, theta=0.0))
     # Bottom left coil edge
-    segmentPivotVecList.append(Vector2D.xy(x=-splitCoilOffset, y=-yRadius+thickness+gapThickness))
+    segmentPivotVecList.append(Vector2D.xy(x=-splitCoilOffset, y=-yRadius+thickness+coilGap))
     segmentParallelVecList.append(Vector2D.rhoTheta(rho=1.0, theta=np.pi/4.0))
     # Bottom right coil edge
-    segmentPivotVecList.append(Vector2D.xy(x=splitCoilOffset, y=-yRadius+thickness+gapThickness))
+    segmentPivotVecList.append(Vector2D.xy(x=splitCoilOffset, y=-yRadius+thickness+coilGap))
     segmentParallelVecList.append(Vector2D.rhoTheta(rho=1.0, theta=7.0*np.pi/4.0))
     # Bottom right side
-    segmentPivotVecList.append(Vector2D.rhoTheta(rho=yRadius-thickness-gapThickness, theta=3.0*np.pi/2.0))
+    segmentPivotVecList.append(Vector2D.rhoTheta(rho=yRadius-thickness-coilGap, theta=3.0*np.pi/2.0))
     segmentParallelVecList.append(Vector2D.rhoTheta(rho=1.0, theta=0.0))
     # Bottom right corner
-    segmentPivotVecList.append(Vector2D.rhoTheta(rho=cornerRadius-thickness-gapThickness, theta=7.0*np.pi/4.0))
+    segmentPivotVecList.append(Vector2D.rhoTheta(rho=cornerRadius-thickness-coilGap, theta=7.0*np.pi/4.0))
     segmentParallelVecList.append(Vector2D.rhoTheta(rho=1.0, theta=np.pi/4.0))
-    _, curveList = manualNGon(segmentPivotVecList, segmentParallelVecList, zThickness/2.0 + gapThickness)
+    _, curveList = manualNGon(segmentPivotVecList, segmentParallelVecList, zThickness/2.0 + coilGap)
     #
-    meshSize = (thickness+2.0*gapThickness)/cellsPerThickness
+    meshSize = (thickness+2.0*coilGap)/cellsPerThickness
     for coilSegmentIndex in coilSegmentIndexList:
         if resetCubitForEachCoil is True:
             cubitReset()
-            _, curveList = manualNGon(segmentPivotVecList, segmentParallelVecList, zThickness/2.0 + gapThickness)
+            _, curveList = manualNGon(segmentPivotVecList, segmentParallelVecList, zThickness/2.0 + coilGap)
         #
         coilBodyList = []
         coilBlockID = cubit.get_next_block_id()
         normVector = Vector2D.unit(Vector2D.scale(Vector2D.perpendicular(segmentParallelVecList[coilSegmentIndex]), -1.0))
         # Create top surfaces of coils
-        cubit.cmd('sweep curve %d vector %f %f %f distance %f' % (curveList[coilSegmentIndex].id(), normVector.x, normVector.y, 0.0, thickness+2.0*gapThickness))
+        cubit.cmd('sweep curve %d vector %f %f %f distance %f' % (curveList[coilSegmentIndex].id(), normVector.x, normVector.y, 0.0, thickness+2.0*coilGap))
         coilBodyList.append(cubit.body(cubit.get_owning_body('surface', cubit.get_last_id('surface'))))
         cubit.cmd('block %d body %d' % (coilBlockID, coilBodyList[-1].id()))
         # Create bottom surfaces of coils
         coilBodyList.append(cubit.copy_body(coilBodyList[-1]))
-        cubit.move(coilBodyList[-1], (0.0, 0.0, -zThickness-2.0*gapThickness))
+        cubit.move(coilBodyList[-1], (0.0, 0.0, -zThickness-2.0*coilGap))
         cubit.cmd('block %d body %d' % (coilBlockID, coilBodyList[-1].id()))
         # Create inside surfaces of coils
-        cubit.cmd('sweep curve %d vector %f %f %f distance %f' % (curveList[coilSegmentIndex].id(), 0.0, 0.0, -1.0, zThickness+2.0*gapThickness))
+        cubit.cmd('sweep curve %d vector %f %f %f distance %f' % (curveList[coilSegmentIndex].id(), 0.0, 0.0, -1.0, zThickness+2.0*coilGap))
         coilBodyList.append(cubit.body(cubit.get_owning_body('surface', cubit.get_last_id('surface'))))
         cubit.cmd('block %d body %d' % (coilBlockID, coilBodyList[-1].id()))
         # Create outside surfaces of coils
         coilBodyList.append(cubit.copy_body(coilBodyList[-1]))
-        cubit.move(coilBodyList[-1], (normVector.x*(thickness+2.0*gapThickness), normVector.y*(thickness+2.0*gapThickness), 0.0))
+        cubit.move(coilBodyList[-1], (normVector.x*(thickness+2.0*coilGap), normVector.y*(thickness+2.0*coilGap), 0.0))
         cubit.cmd('block %d body %d' % (coilBlockID, coilBodyList[-1].id()))
         # Create top current terminal
         cubit.cmd('sweep curve %d vector %f %f %f distance %f' % (curveList[coilSegmentIndex].id(), normVector.x, normVector.y, 0.0, meshSize))
@@ -289,18 +311,26 @@ def coilsOctagon(xRadius, yRadius, cornerRadius, thickness, zThickness, coilSegm
 #
 cubitReset()
 #
-xRadius = 7.875;
+xRadius = 7.875
 yRadius = 4.0
-cornerRadius = 7.875;
+cornerRadius = 7.875
 thickness = 1.0
 zThickness = 1.5
 pipeLength = 10.0
 pipeOR = 0.5
-pipeIR = 0.35
-gapThickness = 0.1
+pipeIR = 0.442
+yokeCollarGap = 0.01
+collarThickness = 0.121
+yokePipeGap = 0.005
+coilGap = 0.1
 pipeCoilGap = 1.25
-resetCubitForEachCoil = False
+resetCubitForEachCoil = True
 #
-yokeOctagonWithPipe(xRadius, yRadius, cornerRadius, thickness, zThickness, pipeLength, pipeOR, pipeIR, cellsPerThickness=4, unvFD='')
-coilsOctagon(xRadius, yRadius, cornerRadius, thickness, zThickness, [0,1,2,5,6,7,8,9,12,13], gapThickness, splitCoilOffset=pipeCoilGap+pipeOR, cellsPerThickness=4, unvFD='', resetCubitForEachCoil=resetCubitForEachCoil)
-
+if len(sys.argv) > 1:
+    print(sys.argv[1:])
+    for command in sys.argv[1:]:
+        exec(command)
+#
+yokeWithPipe(xRadius, yRadius, cornerRadius, thickness, zThickness, pipeLength, pipeOR, pipeIR, yokeCollarGap, collarThickness, yokePipeGap, pipeCoilGap, cellsPerThickness=4, unvFD='')
+coilsOctagon(xRadius, yRadius, cornerRadius, thickness, zThickness, [0,1,2,5,6,7,8,9,12,13], coilGap, splitCoilOffset=pipeCoilGap+pipeOR, cellsPerThickness=4, unvFD='', resetCubitForEachCoil=resetCubitForEachCoil)
+#

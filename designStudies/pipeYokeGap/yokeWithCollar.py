@@ -324,6 +324,7 @@ collarThickness = 0.121
 yokePipeGap = 0.005
 coilGap = 0.1
 pipeCoilGap = 1.25
+unvFD = ''
 resetCubitForEachCoil = True
 #
 if len(sys.argv) > 1:
@@ -331,6 +332,6 @@ if len(sys.argv) > 1:
     for command in sys.argv[1:]:
         exec(command)
 #
-yokeWithPipe(xRadius, yRadius, cornerRadius, thickness, zThickness, pipeLength, pipeOR, pipeIR, yokeCollarGap, collarThickness, yokePipeGap, pipeCoilGap, cellsPerThickness=4, unvFD='')
-coilsOctagon(xRadius, yRadius, cornerRadius, thickness, zThickness, [0,1,2,5,6,7,8,9,12,13], coilGap, splitCoilOffset=pipeCoilGap+pipeOR, cellsPerThickness=4, unvFD='', resetCubitForEachCoil=resetCubitForEachCoil)
+yokeWithPipe(xRadius, yRadius, cornerRadius, thickness, zThickness, pipeLength, pipeOR, pipeIR, yokeCollarGap, collarThickness, yokePipeGap, pipeCoilGap, cellsPerThickness=4, unvFD=unvFD)
+coilsOctagon(xRadius, yRadius, cornerRadius, thickness, zThickness, [0,1,2,5,6,7,8,9,12,13], coilGap, splitCoilOffset=pipeCoilGap+pipeOR, cellsPerThickness=4, unvFD=unvFD, resetCubitForEachCoil=resetCubitForEachCoil)
 #

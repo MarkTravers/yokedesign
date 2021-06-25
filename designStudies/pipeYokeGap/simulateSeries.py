@@ -10,9 +10,9 @@ if __name__ == '__main__':
     testGroup = TestGroup()
 
     # Add parameters to be varied
-    testGroup.addParameter(Parameter('yokeCollarGap', [0.00, 0.01]))
-    testGroup.addParameter(Parameter('collarThickness', [0.00, 0.121]))
-    testGroup.addParameter(Parameter('yokePipeGap', [0.00, 0.005]))
+    testGroup.addParameter(Parameter('yokeCollarGap', [0.01, 0.02]))
+    testGroup.addParameter(Parameter('collarThickness', [0.01, 0.121]))
+    testGroup.addParameter(Parameter('yokePipeGap', [0.01, 0.02]))
     testGroup.addParameter(Parameter('yokeMur', [160.0]))
     testGroup.addParameter(Parameter('collarMur', [160.0]))
     testGroup.addParameter(Parameter('pipeMur', [68.0]))
@@ -24,4 +24,4 @@ if __name__ == '__main__':
     testGroup.addProcessFunction(LinearMagstromSimulation.runFromTestCase, [], {'magstromExeFP':r'C:\Users\travemar\ONR\magstrom\magstrom_application\x64\Release\magstrom_application.exe'})
 
     # Execute process functions for each test case
-    testGroup.execute()
+    testGroup.executeParallel(numWorkers=8)

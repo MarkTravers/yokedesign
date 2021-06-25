@@ -1,3 +1,4 @@
+#!python
 #!python2
 import sys
 sys.path.append('C:\\Python27\\Lib\\site-packages')
@@ -324,7 +325,7 @@ collarThickness = 0.1
 yokePipeGap = 0.05
 coilGap = 0.1
 pipeCoilGap = 1.25
-resetCubitForEachCoil = True
+resetCubitForEachCoil = False
 #
 # if len(sys.argv) > 1:
 #     print(sys.argv[1:])

@@ -112,7 +112,7 @@ def manualNGon(segmentPivotVecList, segmentParallelVecList, zOffset=0.0):
         curveList.append(cubit.create_curve(vertex1, vertex2))
     return nGonVertexList, curveList
 #
-def yokeWithPipe(xRadius, yRadius, cornerRadius, thickness, zThickness, pipeLength, pipeOR, pipeIR, yokeCollarGap, collarThickness, yokePipeGap, pipeCoildGap, cellsPerThickness, unvFD=''):
+def yokeWithPipe(xRadius, yRadius, cornerRadius, thickness, zThickness, pipeLength, pipeOR, pipeIR, yokeCollarGap, collarThickness, collarExtension, yokePipeGap, pipeCoildGap, cellsPerThickness, unvFD=''):
     rhoCycle = [xRadius, cornerRadius, yRadius, cornerRadius]
     #
     # Create outer n-gon
@@ -167,11 +167,11 @@ def yokeWithPipe(xRadius, yRadius, cornerRadius, thickness, zThickness, pipeLeng
     # Create collar
     collarOR = pipeOR + yokePipeGap + collarThickness
     collarIR = pipeOR + yokePipeGap
-    collarBody = cubit.cylinder(thickness, collarOR, collarOR, collarOR)
-    cutterBody = cubit.cylinder(thickness, collarIR, collarIR, collarIR)
+    collarBody = cubit.cylinder(thickness + collarExtension, collarOR, collarOR, collarOR)
+    cutterBody = cubit.cylinder(thickness + collarExtension, collarIR, collarIR, collarIR)
     cubit.subtract([cutterBody], [collarBody])
     cubit.cmd('rotate body %d angle 90 about x include_merged' % collarBody.id())
-    cubit.move(collarBody, (0.0, yRadius-thickness/2.0, 0.0))
+    cubit.move(collarBody, (0.0, yRadius-thickness/2.0-collarExtension/2.0, 0.0))
     collarBlockID = cubit.get_next_block_id()
     cubit.cmd('block %d body %d' % (collarBlockID, collarBody.id()))
     #
@@ -322,6 +322,7 @@ pipeOR = 0.5
 pipeIR = 0.35
 yokeCollarGap = 0.05
 collarThickness = 0.1
+collarExtension = 1.0
 yokePipeGap = 0.05
 coilGap = 0.1
 pipeCoilGap = 1.25
@@ -332,6 +333,6 @@ resetCubitForEachCoil = False
 #     for command in sys.argv[1:]:
 #         exec(command)
 #
-yokeWithPipe(xRadius, yRadius, cornerRadius, thickness, zThickness, pipeLength, pipeOR, pipeIR, yokeCollarGap, collarThickness, yokePipeGap, pipeCoilGap, cellsPerThickness=4, unvFD='')
+yokeWithPipe(xRadius, yRadius, cornerRadius, thickness, zThickness, pipeLength, pipeOR, pipeIR, yokeCollarGap, collarThickness, collarExtension, yokePipeGap, pipeCoilGap, cellsPerThickness=4, unvFD='')
 coilsOctagon(xRadius, yRadius, cornerRadius, thickness, zThickness, [0,1,2,5,6,7,8,9,12,13], coilGap, splitCoilOffset=pipeCoilGap+pipeOR, cellsPerThickness=4, unvFD='', resetCubitForEachCoil=resetCubitForEachCoil)
 #

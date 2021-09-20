@@ -21,7 +21,7 @@ if __name__ == '__main__':
     testGroup.addProcessFunction(TestCase.createCaseFD, ['yokeCollarGap', 'collarThickness', 'yokePipeGap'], {'testCaseRootFD':'./simulations/'})
     testGroup.addProcessFunction(GeometryGenerator.fromTestCase, ['yokeCollarGap', 'collarThickness', 'yokePipeGap'], {'scriptFP':'./yokeWithCollar.py'})
     testGroup.addProcessFunction(LinearMagstromSimulation.fromTestCase, ['yokeMur', 'collarMur', 'pipeMur'], {'inputFileTemplateFP':'./inputYoke.txt', 'replacementDict':{'__magstromMaxThreads__':'12'}})
-    testGroup.addProcessFunction(LinearMagstromSimulation.runFromTestCase, [], {'magstromExeFP':r'C:\Users\travemar\ONR\magstrom\magstrom_application\x64\Release\magstrom_application.exe'})
+    # testGroup.addProcessFunction(LinearMagstromSimulation.runFromTestCase, [], {'magstromExeFP':r'C:\Users\travemar\ONR\magstrom\magstrom_application\x64\Release\magstrom_application.exe'})
 
     # Execute process functions for each test case
     testGroup.executeParallel(numWorkers=8)

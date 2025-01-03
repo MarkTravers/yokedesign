@@ -203,7 +203,7 @@ def yokeWithPipe(xRadius, yRadius, cornerRadius, thickness, zThickness, pipeLeng
     cubit.move(conCutterBody2b, (0.0, 0.0, 0.5*(whatsLeft +  poleDepth)))
     cubit.subtract([conCutterBody2b], [poleBody2])
     cutterBody2 = cubit.cylinder(poleLength, collarIR, collarIR, collarIR)
-    cubit.subtract([cutterBody2], [poleBody2)
+    cubit.subtract([cutterBody2], [poleBody2])
     cubit.cmd('rotate body %d angle 270 about x include_merged' % poleBody2.id())
     cubit.move(poleBody2, (0.0, -(yRadius-thickness-poleLength/2.0), 0.0))
     poleBlockID2 = cubit.get_next_block_id()
@@ -233,8 +233,8 @@ def yokeWithPipe(xRadius, yRadius, cornerRadius, thickness, zThickness, pipeLeng
     cubit.cmd('mesh volume all in block %d %d %d' % (yokeBlockID, pipeBlockID, collarBlockID))
     #
     # Export mesh
-    cubit.cmd('group "Cline2"  add Hex in volume 19 with  z_coord < 0.19134')
-    cubit.cmd('group "Cline1"  add Hex in volume 19 with  x_coord < 0.19134')
+    # cubit.cmd('group "Cline2"  add Hex in volume 19 with  z_coord < 0.19134')
+    # cubit.cmd('group "Cline1"  add Hex in volume 19 with  x_coord < 0.19134')
     cubit.cmd('group "%s" add volume all in block %d' % ('yoke', yokeBlockID))
     cubit.cmd('group "%s" add volume all in block %d' % ('pipeSample', pipeBlockID))
     cubit.cmd('group "%s" add volume all in block %d %d %d' % ('collar', collarBlockID, poleBlockID1, poleBlockID2))
@@ -374,7 +374,7 @@ resetCubitForEachCoil = True
 #         exec(command)
 #
 yokeWithPipe(xRadius, yRadius, cornerRadius, thickness, zThickness, pipeLength, pipeOR, pipeIR, yokeCollarGap, collarThickness, poleLength, poleRad1, poleRad2, poleDepth, yokePipeGap, pipeCoilGap, cellsPerThickness=5, unvFD='')
-#coilsOctagon(xRadius, yRadius, cornerRadius, thickness, zThickness, [0,1,2,5,6,7,8,9,12,13], coilGap, splitCoilOffset=pipeCoilGap+pipeOR, cellsPerThickness=5, unvFD='', resetCubitForEachCoil=resetCubitForEachCoil)
+coilsOctagon(xRadius, yRadius, cornerRadius, thickness, zThickness, [0,1,2,5,6,7,8,9,12,13], coilGap, splitCoilOffset=pipeCoilGap+pipeOR, cellsPerThickness=5, unvFD='', resetCubitForEachCoil=resetCubitForEachCoil)
 #
 
 

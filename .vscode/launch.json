@@ -12,10 +12,10 @@
             "console": "integratedTerminal"
         },
         {
-            "name": "Run seriesExample.py (Integrated Terminal)",
+            "name": "Run yokeWithInvertedPole.py (Integrated Terminal)",
             "type": "debugpy",
             "request": "launch",
-            "program": "${workspaceFolder}/seriesExample.py",
+            "program": "${workspaceFolder}/yokeWithPoles/yokeWithInvertedPole.py",
             "console": "integratedTerminal"
         }
     ]

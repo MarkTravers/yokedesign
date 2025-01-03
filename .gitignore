@@ -1,3 +1,4 @@
 *.jou
 /magstromOutput
 simulations/
+\venv

@@ -1,5 +1,6 @@
 *.jou
 /magstromOutput
+/yokedesign\designStudies\pipeYokeGap
 simulations/
 \venv
 /yokeWithPoles/magstromOutput

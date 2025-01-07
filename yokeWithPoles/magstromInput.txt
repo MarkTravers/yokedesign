@@ -106,7 +106,7 @@
          # Current type (electric,magnetic)
          electric
          # Coil Current Amplitude (A-turns):
-         1.0
+         20000.0
 
    # Excitation name
    coil1
@@ -130,7 +130,7 @@
          # Current type (electric,magnetic)
          electric
          # Coil Current Amplitude (A-turns):
-         1.0
+         20000.0
 
    # Excitation name
    coil2
@@ -154,7 +154,7 @@
          # Current type (electric,magnetic)
          electric
          # Coil Current Amplitude (A-turns):
-         1.0
+         20000.0
 
    # Excitation name
    coil5
@@ -178,7 +178,7 @@
          # Current type (electric,magnetic)
          electric
          # Coil Current Amplitude (A-turns):
-         1.0
+         20000.0
 
    # Excitation name
    coil6
@@ -202,7 +202,7 @@
          # Current type (electric,magnetic)
          electric
          # Coil Current Amplitude (A-turns):
-         1.0
+         20000.0
 
    # Excitation name
    coil7
@@ -226,7 +226,7 @@
          # Current type (electric,magnetic)
          electric
          # Coil Current Amplitude (A-turns):
-         1.0
+         20000.0
 
    # Excitation name
    coil8
@@ -250,7 +250,7 @@
          # Current type (electric,magnetic)
          electric
          # Coil Current Amplitude (A-turns):
-         1.0
+         20000.0
 
    # Excitation name
    coil9
@@ -274,7 +274,7 @@
          # Current type (electric,magnetic)
          electric
          # Coil Current Amplitude (A-turns):
-         1.0
+         20000.0
 
    # Excitation name
    coil12
@@ -298,7 +298,7 @@
          # Current type (electric,magnetic)
          electric
          # Coil Current Amplitude (A-turns):
-         1.0
+         20000.0
 
    # Excitation name
    coil13
@@ -322,7 +322,7 @@
          # Current type (electric,magnetic)
          electric
          # Coil Current Amplitude (A-turns):
-         1.0
+         20000.0
 
 ##### section : probe #####
    # Number of probes
@@ -421,14 +421,14 @@
 
    # Use saved DOF file : no = do nothing, write = fill/solve normally, write dofs.txt file, 
    #                    : read = don't fill/solve, read dofs.txt file
-   read
+   write
 
 ######  section:  Non-linear solver (leave blank, if none) ####
    # non-linear solver type  (stepped, imi, fmi, or none):
    none
 
 # Control Flags
-$SET_NUM_THREADS_TO:6
+$SET_NUM_THREADS_TO:44
 $MESH_STATISTICS:FULL
 $ADAPTIVE_INTEGRATOR_MAX_SUBDOMAINS:4096
 $GEMF_ADAPTIVE_INTEGRATOR_ZERO_TOLERANCE:1e-10

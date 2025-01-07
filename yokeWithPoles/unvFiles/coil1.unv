@@ -3,10 +3,10 @@
 coil1.unv
 
 CUBIT version 15.3 revised 2018-09-20 09:38:41 -0600 (Thu, 20 Sep 2018)
-  03-01-25  15:37:26         0         0         0
-  03-01-25  15:37:26
+  07-01-25  09:55:13         0         0         0
+  07-01-25  09:55:13
 CUBIT
-  03-01-25  15:37:26
+  07-01-25  09:55:13
     -1
     -1
    164
@@ -30,22 +30,6 @@ MATERIAL
 ----------------------------------------------------------------------
          9  MATERIAL PROPERT(IES)
 ----------------------------------------------------------------------
-SHEAR MODULUS
-         1  VERSION NUMBER
-         0  LINE(S) OF TEXT
-DIMENSIONS AND UNITS:
-PRESSURE                                NEWTON/MILLIMETER^2
-CONSTANT
-   8.0155039000000004e+04
-----------------------------------------------------------------------
-POISSONS RATIO
-         1  VERSION NUMBER
-         0  LINE(S) OF TEXT
-DIMENSIONS AND UNITS:
-DIMENSIONLESS                           UNITLESS
-CONSTANT
-   2.8999999999999998e-01
-----------------------------------------------------------------------
 MASS DENSITY
          1  VERSION NUMBER
          0  LINE(S) OF TEXT
@@ -53,38 +37,6 @@ DIMENSIONS AND UNITS:
 MASS DENSITY                            GRAM/MILLIMETER^3
 CONSTANT
    6.9999999999999999e-06
-----------------------------------------------------------------------
-SPECIFIC HEAT
-         1  VERSION NUMBER
-         0  LINE(S) OF TEXT
-DIMENSIONS AND UNITS:
-SPECIFIC HEAT                          J/(kg*K)
-CONSTANT
-   5.0000000000000000e+02
-----------------------------------------------------------------------
-THERMAL CONDUCTIVITY
-         1  VERSION NUMBER
-         0  LINE(S) OF TEXT
-DIMENSIONS AND UNITS:
-CONDUCTIVITY                           W/(m*K)
-CONSTANT
-   4.4999999999999998e-02
-----------------------------------------------------------------------
-COEFFICIENT OF THERMAL EXPANSION
-         1  VERSION NUMBER
-         0  LINE(S) OF TEXT
-DIMENSIONS AND UNITS:
-TEMPERATURE                            K^-1
-CONSTANT
-   1.2000000000000000e-05
-----------------------------------------------------------------------
-MODULUS OF ELASTICITY
-         1  VERSION NUMBER
-         0  LINE(S) OF TEXT
-DIMENSIONS AND UNITS:
-PRESSURE                                NEWTON/MILLIMETER^2
-CONSTANT
-   2.0680000000000000e+05
 ----------------------------------------------------------------------
 ULTIMATE STRENGTH
          1  VERSION NUMBER
@@ -94,6 +46,30 @@ STRESS                                 MPa
 CONSTANT
    5.9000000000000000e+02
 ----------------------------------------------------------------------
+SHEAR MODULUS
+         1  VERSION NUMBER
+         0  LINE(S) OF TEXT
+DIMENSIONS AND UNITS:
+PRESSURE                                NEWTON/MILLIMETER^2
+CONSTANT
+   8.0155039000000004e+04
+----------------------------------------------------------------------
+SPECIFIC HEAT
+         1  VERSION NUMBER
+         0  LINE(S) OF TEXT
+DIMENSIONS AND UNITS:
+SPECIFIC HEAT                          J/(kg*K)
+CONSTANT
+   5.0000000000000000e+02
+----------------------------------------------------------------------
+MODULUS OF ELASTICITY
+         1  VERSION NUMBER
+         0  LINE(S) OF TEXT
+DIMENSIONS AND UNITS:
+PRESSURE                                NEWTON/MILLIMETER^2
+CONSTANT
+   2.0680000000000000e+05
+----------------------------------------------------------------------
 YIELD STRENGTH
          1  VERSION NUMBER
          0  LINE(S) OF TEXT
@@ -102,16 +78,40 @@ STRESS                                 MPa
 CONSTANT
    3.7400000000000000e+02
 ----------------------------------------------------------------------
+COEFFICIENT OF THERMAL EXPANSION
+         1  VERSION NUMBER
+         0  LINE(S) OF TEXT
+DIMENSIONS AND UNITS:
+TEMPERATURE                            K^-1
+CONSTANT
+   1.2000000000000000e-05
+----------------------------------------------------------------------
+POISSONS RATIO
+         1  VERSION NUMBER
+         0  LINE(S) OF TEXT
+DIMENSIONS AND UNITS:
+DIMENSIONLESS                           UNITLESS
+CONSTANT
+   2.8999999999999998e-01
+----------------------------------------------------------------------
+THERMAL CONDUCTIVITY
+         1  VERSION NUMBER
+         0  LINE(S) OF TEXT
+DIMENSIONS AND UNITS:
+CONDUCTIVITY                           W/(m*K)
+CONSTANT
+   4.4999999999999998e-02
+----------------------------------------------------------------------
 DEFAULT MATERIAL PROPERT(IES):
-SHEAR MODULUS                           VERSION :          1
-POISSONS RATIO                          VERSION :          1
 MASS DENSITY                            VERSION :          1
-SPECIFIC HEAT                           VERSION :          1
-THERMAL CONDUCTIVITY                    VERSION :          1
-COEFFICIENT OF THERMAL EXPANSION        VERSION :          1
-MODULUS OF ELASTICITY                   VERSION :          1
 ULTIMATE STRENGTH                       VERSION :          1
+SHEAR MODULUS                           VERSION :          1
+SPECIFIC HEAT                           VERSION :          1
+MODULUS OF ELASTICITY                   VERSION :          1
 YIELD STRENGTH                          VERSION :          1
+COEFFICIENT OF THERMAL EXPANSION        VERSION :          1
+POISSONS RATIO                          VERSION :          1
+THERMAL CONDUCTIVITY                    VERSION :          1
 ----------------------------------------------------------------------
          1  REFERENCE ENTITIES
          1  MATERIAL TYPES

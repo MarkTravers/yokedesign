@@ -1,5 +1,5 @@
 %    UNITS: X,Y,Z in in;  Magnetic Field Intensity in Amps/meter
-%             X (in)              Y (in)              Z (in)        RealScatX        RealScatY        RealScatZ         RealTotX         RealTotY         RealTotZ
+%          X (in)           Y (in)           Z (in)        RealScatX        RealScatY        RealScatZ         RealTotX         RealTotY         RealTotZ
                 0              -11                0       -1.3701022      -0.98664673   -6.1283256e-05       -1.3180458      -0.92759541   -6.1283256e-05 
                 0       -10.777778                0       -1.3562104       -1.0216802   -6.6808973e-05        -1.293187      -0.95925308   -6.6808973e-05 
                 0       -10.555556                0       -1.3325647       -1.0585496    -7.303625e-05       -1.2567481      -0.99251083    -7.303625e-05 

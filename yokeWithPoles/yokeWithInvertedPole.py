@@ -1,3 +1,4 @@
+#!python
 #!python2
 import sys
 sys.path.append('C:\\Python27\\Lib\\site-packages')
@@ -376,6 +377,7 @@ resetCubitForEachCoil = True
 yokeWithPipe(xRadius, yRadius, cornerRadius, thickness, zThickness, pipeLength, pipeOR, pipeIR, yokeCollarGap, collarThickness, poleLength, poleRad1, poleRad2, poleDepth, yokePipeGap, pipeCoilGap, cellsPerThickness=5, unvFD='')
 coilsOctagon(xRadius, yRadius, cornerRadius, thickness, zThickness, [0,1,2,5,6,7,8,9,12,13], coilGap, splitCoilOffset=pipeCoilGap+pipeOR, cellsPerThickness=5, unvFD='', resetCubitForEachCoil=resetCubitForEachCoil)
 #
+
 
 
 

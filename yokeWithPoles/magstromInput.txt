@@ -98,9 +98,9 @@
          # Coil Mesh Units:
          inch
          # Starting cell group name:
-         coil0topTerminal
-         # Last cell group name:
          coil0insideTerminal
+         # Last cell group name:
+         coil0topTerminal
          # Favor 'fast' or 'adaptive' integrators
          adaptive
          # Current type (electric,magnetic)
@@ -290,9 +290,9 @@
          # Coil Mesh Units:
          inch
          # Starting cell group name:
-         coil12topTerminal
-         # Last cell group name:
          coil12insideTerminal
+         # Last cell group name:
+         coil12topTerminal
          # Favor 'fast' or 'adaptive' integrators
          adaptive
          # Current type (electric,magnetic)
@@ -372,7 +372,7 @@
       TestGrid
       # Test Grid Order
       1
-	  # Options
+	   #Options
       &option vtk
 
    # Probe name
@@ -421,14 +421,14 @@
 
    # Use saved DOF file : no = do nothing, write = fill/solve normally, write dofs.txt file, 
    #                    : read = don't fill/solve, read dofs.txt file
-   write
+   read
 
 ######  section:  Non-linear solver (leave blank, if none) ####
    # non-linear solver type  (stepped, imi, fmi, or none):
    none
 
 # Control Flags
-$SET_NUM_THREADS_TO:80
+$SET_NUM_THREADS_TO:6
 $MESH_STATISTICS:FULL
 $ADAPTIVE_INTEGRATOR_MAX_SUBDOMAINS:4096
 $GEMF_ADAPTIVE_INTEGRATOR_ZERO_TOLERANCE:1e-10

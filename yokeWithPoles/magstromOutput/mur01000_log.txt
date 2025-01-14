@@ -1,0 +1,184 @@
+System log file opened at Mon Jan 13 17:47:51 2025
+ Application started on Mon Jan 13 17:47:51 2025
+ GEMF library version: 3252 (CLEAN); Compiled on 2024/10/02 14:04:36; Run-Time Library = Multi-Threaded 
+ Magstrom library version: 1526 (CLEAN); Compiled on 2025/01/07 11:55:52
+ Intel(R) oneAPI Math Kernel Library Version 2021.4-Product Build 20210904 for Intel(R) 64 architecture applications
+
+******** BEGINING OF INPUT FILE ********
+
+Reading in Control Flags...
+   ControlFlag: $SET_NUM_THREADS_TO:8
+   ControlFlag: $MESH_STATISTICS:FULL
+   ControlFlag: $ADAPTIVE_INTEGRATOR_MAX_SUBDOMAINS:4096
+   ControlFlag: $GEMF_ADAPTIVE_INTEGRATOR_ZERO_TOLERANCE:1e-10
+   ControlFlag: $GEMF_PROBE_COMMENT_CHARACTER:%
+   ControlFlag: $END
+Done reading in Control Flags.
+
+Resetting the number of threads to 8
+ OpenMp : There are 88 processors available on this machine.
+ OpenMp : There are 88 threads available on this machine.
+ OpenMp : Application will use up to 8 threads on this machine.
+ OpenMp : Dyanmic chunk size is 1.
+Reading User Units...
+Done Reading in User Defined Units.
+
+Reading in Mesh Parameters...
+Done Reading in Mesh Parameters.
+
+Reading in Basis Order...
+Done Reading in Basis Order.
+
+Reading in Floating-Point Format ...
+Done Reading in Basis Floating-Point Format.
+
+Reading in Materials...
+	Material 1 of 3 ...Done.
+	Material 2 of 3 ...Done.
+	Material 3 of 3 ...Done.
+Done Reading in Materials.
+
+Reading in Backgrounds...
+	Background 1 of 1 ...Done.
+Done Reading in Backgrounds.
+
+Reading in Signatures...
+Done reading in Signatures.
+
+Reading in Excitations...
+	Excitation 1 of 10 ...Done.
+	Excitation 2 of 10 ...Done.
+	Excitation 3 of 10 ...Done.
+	Excitation 4 of 10 ...Done.
+	Excitation 5 of 10 ...Done.
+	Excitation 6 of 10 ...Done.
+	Excitation 7 of 10 ...Done.
+	Excitation 8 of 10 ...Done.
+	Excitation 9 of 10 ...Done.
+	Excitation 10 of 10 ...Done.
+Done reading in Excitations.
+
+Reading in Probes...
+	Probe 1 of 4 ...Done.
+	Probe 2 of 4 ...Done.
+	Probe 3 of 4 ...Done.
+	Probe 4 of 4 ...Done.
+Done reading in Probes.
+
+Reading in Simulation Groups...
+	SimGroup 1 of 1 ...Done.
+Done reading in Sim Groups.
+
+Done reading in Simulation Groups.
+
+Reading in Boundaries...
+Done reading in Boundaries.
+
+Reading in analysis specific input...
+Setting the adaptive integrator integration tolerance to 1e-05
+Done reading analysis specific input.
+Loading Mesh From File(s) ...
+Reading mesh file ./unvFiles/yokeCollarPipe.unv took 1.20464 .sec.
+Total mesh processing took 1.20466 .sec.
+Done loading Mesh File.
+
+Pre-Processing Probes ...
+Done Pre-Processing Probes 
+******** END OF INPUT FILE ********
+
+IO Time Elapsed:  1.47855  seconds
+ ******************************************************
+
+ COMPUTING MESH STATISTICS FOR MESH(ES) 
+    ./unvFiles/yokeCollarPipe.unv
+
+  ****** ELEMENT COUNT ******
+    Number of Nodes    = 92302
+    Number of Vertices = 13672
+    Number of Edges    = 36632
+    Number of Faces    = 32478
+        Triangle faces     : 0
+        Quad faces         : 32478
+        Unrecognized faces : 0
+        Boundary     faces : 7836
+        Isolated     faces : 0
+    Number of Volumes  = 9520
+        Tet   volumes        : 0
+        Hex   volumes        : 9520
+        Prism volumes        : 0
+        Unrecognized volumes : 0
+
+  ****** COINCIDENT NODE CHECK ******
+       Mesh has 0 coincident nodes.
+
+  ****** MESH BOUNDS ******
+       Minimum bound (x,y,z) =  -0.200025 m   -0.127 m   -0.01905 m
+       Maximum bound (x,y,z) =  0.200025 m   0.127 m   0.01905 m
+
+  ****** EDGE LENGTH STATISTICS 2 ******
+       The minimum edge length is 0.000634999999999995811 m  for Edge with GEMF ID 92272
+       The maximum edge length is 0.0132560828753924102 m  for Edge with GEMF ID 32111
+       The mean    edge length is 0.00491072217300610441 m 
+
+  ****** DUPLICATE ELEMENT CHECK ******
+       Mesh has 0 duplicate Vertex Topologies.
+       Mesh has 0 duplicate Edge Topologies.
+       Mesh has 0 duplicate Face Topologies.
+       Mesh has 0 duplicate Volume Topologies.
+
+  ****** MESH VOLUME CHECK ******
+       Total signed / unsigned mesh Tet   volume is 0 / 0 m^3 in 0 cells
+       Total signed / unsigned mesh Prism volume is 0 / 0 m^3 in 0 cells
+       Total signed / unsigned mesh Hex   volume is 0.00107334869668865513 / 0.00107334869668865513 m^3 in 9520 cells
+           Hex with minimum unsigned volume is GEMF ID# 2652 with volume 1.51642030585803333e-08 m^3
+           Hex with maximum unsigned volume is GEMF ID# 642 with volume 2.95257000459774706e-07 m^3
+           Average unsigned hex volume is 1.12746711837043604e-07 m^3
+       Total signed / unsigned mesh Pyramid   volume is 0 / 0 m^3 in 0 cells
+       Total Mesh Volume is 0.00107334869668865513 m^3
+
+  ****** MESH VOLUME TOPOLOGY CONVEXITY CHECK (APPROXIMATE) ******
+       All Volume elements appear to be convex.
+
+  ****** MESH NON-INTERIOR FACE SURFACE AREA CHECK ******
+       MESH SURFACE AREA CHECK FOR FACES NOT ASSOCIATED WITH VOLUMES 
+           Total signed / unsigned mesh Tri   surface area is 0 / 0 m^2 in 0 cells
+           Total signed / unsigned mesh Quad  surface area is 0 / 0 m^2 in 0 cells
+           Total signed / unsigned mesh surface area is 0 / 0 m^2 in 0 cells
+       MESH SURFACE AREA CHECK FOR EXTERIOR FACES 
+           Total signed / unsigned mesh Tri   surface area is 0 / 0 m^2 in 0 cells
+           Total signed / unsigned mesh Quad  surface area is 0.1932151513598481529 / 0.1932151513598481529 m^2 in 7836 cells
+               Quad with minimum unsigned surface area is GEMF ID# 57740 with surface area 1.768315710715706098e-06 m^2
+               Quad with maximum unsigned surface area is GEMF ID# 44535 with surface area 6.313209469405643389e-05 m^2
+               Average unsigned quad surface area is 2.465737000508526737e-05 m^2
+           Total signed / unsigned mesh surface area is 0.1932151513598481529 / 0.1932151513598481529 m^2 in 7836 cells
+
+
+
+GROUP NAMES
+    collar
+
+    pipeSample
+
+    yoke
+
+Initialize Nystrom DOFs ... DONE.
+System Source DOFs = 57120
+System Field DOFs = 57120
+System Volumes = 9520
+Setup Time Elapsed:  10.96591610601171851  seconds
+Excitation Vectors Time Elapsed:  106.5750309242866933  seconds
+  # of 2D Self Evaluations         =  3024012420
+  # of 3D Self Evaluations         =  1087950574
+  # of 3D Non Self Evaluations     =  84056641264
+  # of Volume Fn Evals             =  85144591838
+  # of Volume Integration Domains  =  552551482
+  # Surface Fn Evals               =  3024012420
+  # of Surface Integration Domains =  62477226
+Fill Time Elapsed:  8220.544004310388118  seconds
+Current matrix solve took  996.7478263974189758  seconds; Total matrix solve is  996.7478263974189758  seconds; 
+Solve Time Elapsed:  997.1544614569284022  seconds
+Probe Time Elapsed:  6.472054317593574524  seconds
+Post-Processing MPI Probes ...
+Done Post-Processing MPI Probes 
+Total Time Elapsed:  9343.200498592108488  seconds
+ Application finished on Mon Jan 13 20:23:37 2025

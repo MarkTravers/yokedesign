@@ -5,16 +5,16 @@ from typing import List, Tuple
 import subprocess
 from multiprocessing import Pool
 
-def execute(magstromInputFN:str, magstromExeFP:str) -> None:
-    subprocess.run([magstromExeFP, magstromInputFN])
+def execute(magstromInputFN:str) -> None:
+    subprocess.run(['C:/Users/travemar/ONR/magstrom/magstrom_application/x64/Release/magstrom_application.exe', magstromInputFN])
 
 if __name__ == '__main__':
     murList = [2, 100, 1000, 10000]
 
-    magstromExeFP = 'C:/Users/travemar/ONR/magstrom/magstrom_application/x64/Release/magstrom_application.exe'
+    # magstromExeFP = 'C:/Users/travemar/ONR/magstrom/magstrom_application/x64/Release/magstrom_application.exe'
     magstromInputTemplateFN = 'magstromInput_template.txt'
 
-    cueArgsList:List[Tuple[str,str]] = []
+    cueArgsList:List[str] = []
 
     for mur in murList:
         with open(magstromInputTemplateFN, 'rt') as inputTemplate:
@@ -28,7 +28,7 @@ if __name__ == '__main__':
         with open(magstromInputCaseFN, 'tw') as inputCase:
             inputCase.write(inputStr)
 
-        cueArgsList.append((magstromExeFP, f'./{magstromInputCaseFN}'))
+        cueArgsList.append(f'./{magstromInputCaseFN}')
 
     with Pool(processes=len(murList)) as simWorkerPool:
-        simWorkerPool.starmap(execute, cueArgsList)
+        simWorkerPool.map(execute, cueArgsList)

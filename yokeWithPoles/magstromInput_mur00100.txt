@@ -326,7 +326,7 @@
 
 ##### section : probe #####
    # Number of probes
-   4
+   6
 
    # Probe name
    YokeMag
@@ -393,6 +393,42 @@
       0.0  -11.0    0.0
       0.0  11.0    0.0
 
+   # Probe name
+   HRadialPerpendicular
+      # Probe type
+      FieldStaticH
+      # Background name
+      DefaultBackground
+      # 'total' or 'scattered' field (scattered is always computed, if 'total' then both)
+      total
+      # Integration Error Tolerance
+      1.e-5
+      # Point Type (Single, Line, Surface)
+      Line 
+      # Number of Points
+      101
+      # Point List (x,y,z)
+      0.0    0.05  0.0
+      0.098  0.05  0.995
+
+   # Probe name
+   HRadialParallel
+      # Probe type
+      FieldStaticH
+      # Background name
+      DefaultBackground
+      # 'total' or 'scattered' field (scattered is always computed, if 'total' then both)
+      total
+      # Integration Error Tolerance
+      1.e-5
+      # Point Type (Single, Line, Surface)
+      Line 
+      # Number of Points
+      101
+      # Point List (x,y,z)
+      0.0    0.05  0.0
+      0.995  0.05  -0.098
+
 ##### section : SimulationGroups #####
    # Number of SimulationGroups
    1 
@@ -404,9 +440,9 @@
       # Excitation names
       coil0  coil1  coil2  coil5  coil6  coil7  coil8  coil9  coil12  coil13
       # Number of Probes
-      4
+      6
       # Probe names
-      YokeMag  PipeMag  VTKProbe  PipeCenterH
+      YokeMag  PipeMag  VTKProbe  PipeCenterH  HRadialPerpendicular  HRadialParallel
 
 ##### section : boundary condition #####
    # Number of boundary conditions
@@ -421,14 +457,14 @@
 
    # Use saved DOF file : no = do nothing, write = fill/solve normally, write dofs.txt file, 
    #                    : read = don't fill/solve, read dofs.txt file
-   write
+   read
 
 ######  section:  Non-linear solver (leave blank, if none) ####
    # non-linear solver type  (stepped, imi, fmi, or none):
    none
 
 # Control Flags
-$SET_NUM_THREADS_TO:8
+$SET_NUM_THREADS_TO:1
 $MESH_STATISTICS:FULL
 $ADAPTIVE_INTEGRATOR_MAX_SUBDOMAINS:4096
 $GEMF_ADAPTIVE_INTEGRATOR_ZERO_TOLERANCE:1e-10

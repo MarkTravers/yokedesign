@@ -1,0 +1,252 @@
+
+##### section : output #####
+   # Output file path
+   ./magstromOutput/
+
+   # Output job name ("none" for no job name)
+   mur10000
+
+##### section : mesh #####
+   # Mesh file type (Universal,Genesis,Nystrom)
+   Universal
+
+   # Mesh file name
+   ./unvFiles/FlaredThinHollowPipe_3planeSym.unv
+
+   # Mesh Units (meter, cm, mm, micron, yard, foot, inc, mil, or "other XX")
+   #     If 'other', then  specify scale factor XX such that XX * 1 meter = MeshUnits
+   mm
+
+##### section : basis order #####
+   # Minimum/Maximum Order of basis function
+   0     0
+   # Minimum/Maximum edge lengths for basis order distribution
+   1.0 1.0
+
+##### section : floating-point output format #####
+   # Format type ('default','none','fixed','scientific')
+   none
+   # Width / Precision
+   16   8
+
+##### section : material #####
+   # Number of materials
+   2
+
+   # Material name
+   DefaultMaterial
+      # Material type
+      IsotropicLossless
+      # Group name
+      none
+      # epsilon_r, mu_r
+      1.0   1.0
+
+   # Material name
+   MagneticMaterial
+      # Material type
+      IsotropicLossless
+      # Group name
+      MagneticMaterial
+      # epsilon_r, mu_r
+      1.0 10000.0
+
+##### section : Background #####
+   # Number of backgrounds
+   2
+
+   # Background name
+   DefaultBackground_NOT
+   #DefaultBackground
+      # Background type
+      HomogeneousMedia
+      # Group Name
+      none
+      # Material name
+      DefaultMaterial
+
+   # Background name
+   DefaultBackground
+      # Background type
+      ImagePlaneHomoMedia
+  # Volume Group Name(s):
+     none
+  # Background Material Name:
+   DefaultMaterial
+  # Number of image planes
+    3
+  # image plane normal
+    x
+  # image plane type
+    pmc
+  # image plane offset
+    0.0
+  # image plane normal
+    y
+  # image plane type
+    pec
+  # image plane offset
+    0.0
+  # image plane normal
+    z
+  # image plane type
+    pec
+  # image plane offset
+    0.0
+
+##### section : source signature #####
+   # Number of source signatures
+   0
+
+##### section : excitation #####
+
+   # Number of excitations
+   1
+
+   # Excitation name
+   StaticHFieldx
+      # Excitation type
+      Field
+      # Background name
+      DefaultBackground
+      # Excitation direction
+      1.0 0.0 0.0
+      # Excitation amplitude
+      1.0
+      # Field type (electric,magnetic)
+      magnetic
+
+
+##### section : probe #####
+   # Number of probes
+   5
+
+   # Probe name
+   Mline
+      # Probe type
+      CurrentPolarization
+      # Background name
+      DefaultBackground
+      #Group name
+      &1 Mline
+      # Polarization current type
+      magnetic
+      # Grid Type ('SystemTestGrid', 'CellNodes', 'TestGrid'; 'TestGrid' requires a grid order)
+      TestGrid
+      # Test Grid Order
+      1
+      &option fields
+
+   # Probe name
+   HRadialInside
+      # Probe type
+      FieldStaticH
+      # Background name
+      DefaultBackground
+      # 'total' or 'scattered' field (scattered is always computed, if 'total' then both)
+      total
+      # Integration Error Tolerance
+      1.e-5
+      # Point Type (Single, Line, Surface)
+      Line 
+      # Number of Points
+      90
+      # Point List (x,y,z)
+      0.5416665e-3  0.0          0.0
+      0.5416665e-3  8.885999e-3  0.499027e-3
+
+   # Probe name
+   HRadialOutside
+      # Probe type
+      FieldStaticH
+      # Background name
+      DefaultBackground
+      # 'total' or 'scattered' field (scattered is always computed, if 'total' then both)
+      total
+      # Integration Error Tolerance
+      1.e-5
+      # Point Type (Single, Line, Surface)
+      Line 
+      # Number of Points
+      104
+      # Point List (x,y,z)
+      0.541667e-3  10.569226e-3  0.593555e-3
+      0.541667e-3  20.966963e-3  1.177479e-3
+
+   # Probe name
+   Haxial
+      # Probe type
+      FieldStaticH
+      # Background name
+      DefaultBackground
+      # 'total' or 'scattered' field (scattered is always computed, if 'total' then both)
+      total
+      # Integration Error Tolerance
+      1.e-5
+      # Point Type (Single, Line, Surface)
+      Line 
+      # Number of Points
+      101
+      # Point List (x,y,z)
+      -254e-3   0   0
+      254e-3    0   0
+
+   # Probe name
+   VTKProbe
+      # Probe type
+      CurrentPolarization
+      # Background name
+      DefaultBackground
+      # Polarization current type
+      magnetic
+      # Grid Type ('SystemTestGrid', 'CellNodes', 'TestGrid'; 'TestGrid' requires a grid order)
+      TestGrid
+      # Test Grid Order
+      1
+	   #Options
+      &option vtk
+      
+
+##### section : SimulationGroups #####
+   # Number of SimulationGroups
+   1
+
+   # SimulationGroup name
+   grp
+      # Number of Excitations
+      1
+      # Excitation names
+      StaticHFieldx
+      # Number of Probes
+      5
+      # Probe names
+      Mline  HRadialInside  HRadialOutside  Haxial  VTKProbe
+
+
+##### section : boundary condition #####
+   # Number of boundary conditions
+   0
+
+##### section : Analysis Type #####
+   # Matrix type (Dense,Logos,FMM)
+   Dense
+
+   # Error Tolerance for Adaptive Integration
+   1.e-5
+
+   # Use saved DOF file : no = do nothing, write = fill/solve normally, write dofs.txt file, 
+   #                    : read = don't fill/solve, read dofs.txt file
+   write
+
+   # Solver type  (stepped, imi, fmi, transient, or none):
+   none
+
+####### control flags
+$SET_NUM_THREADS_TO:2
+$GEMF_PROBE_COMMENT_CHARACTER:%
+$ZERO_NODES:1e-13
+$MESH_STATISTICS:FULL
+$GEMF_ADAPTIVE_INTEGRATOR_ZERO_TOLERANCE:1e-10
+
+##### END OF FILE #####
+

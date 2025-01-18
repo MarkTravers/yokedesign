@@ -1,5 +1,5 @@
-System log file opened at Wed Jan 15 15:27:28 2025
- Application started on Wed Jan 15 15:27:28 2025
+System log file opened at Thu Jan 16 14:21:22 2025
+ Application started on Thu Jan 16 14:21:22 2025
  GEMF library version: 3252 (CLEAN); Compiled on 2024/10/02 14:04:36; Run-Time Library = Multi-Threaded 
  Magstrom library version: 1526 (CLEAN); Compiled on 2025/01/07 11:55:52
  Intel(R) oneAPI Math Kernel Library Version 2021.4-Product Build 20210904 for Intel(R) 64 architecture applications
@@ -80,15 +80,15 @@ Reading in analysis specific input...
 Setting the adaptive integrator integration tolerance to 1e-05
 Done reading analysis specific input.
 Loading Mesh From File(s) ...
-Reading mesh file ./unvFiles/yokeCollarPipe.unv took 1.65186 .sec.
-Total mesh processing took 1.65187 .sec.
+Reading mesh file ./unvFiles/yokeCollarPipe.unv took 1.62142 .sec.
+Total mesh processing took 1.62144 .sec.
 Done loading Mesh File.
 
 Pre-Processing Probes ...
 Done Pre-Processing Probes 
 ******** END OF INPUT FILE ********
 
-IO Time Elapsed:  1.86999  seconds
+IO Time Elapsed:  1.89913  seconds
  ******************************************************
 
  COMPUTING MESH STATISTICS FOR MESH(ES) 
@@ -148,11 +148,11 @@ IO Time Elapsed:  1.86999  seconds
            Total signed / unsigned mesh surface area is 0 / 0 m^2 in 0 cells
        MESH SURFACE AREA CHECK FOR EXTERIOR FACES 
            Total signed / unsigned mesh Tri   surface area is 0 / 0 m^2 in 0 cells
-           Total signed / unsigned mesh Quad  surface area is 0.1932151513598486525 / 0.1932151513598486525 m^2 in 7836 cells
+           Total signed / unsigned mesh Quad  surface area is 0.193215151359848708 / 0.193215151359848708 m^2 in 7836 cells
                Quad with minimum unsigned surface area is GEMF ID# 57740 with surface area 1.768315710715706098e-06 m^2
                Quad with maximum unsigned surface area is GEMF ID# 44535 with surface area 6.313209469405643389e-05 m^2
-               Average unsigned quad surface area is 2.465737000508533175e-05 m^2
-           Total signed / unsigned mesh surface area is 0.1932151513598486525 / 0.1932151513598486525 m^2 in 7836 cells
+               Average unsigned quad surface area is 2.465737000508533852e-05 m^2
+           Total signed / unsigned mesh surface area is 0.193215151359848708 / 0.193215151359848708 m^2 in 7836 cells
 
 
 
@@ -167,10 +167,5 @@ Initialize Nystrom DOFs ... DONE.
 System Source DOFs = 57120
 System Field DOFs = 57120
 System Volumes = 9520
-Setup Time Elapsed:  1.303050053611514159  seconds
-Solve Time Elapsed:  0.1057595231977757066  seconds
-Probe Time Elapsed:  112.9742914616508642  seconds
-Post-Processing MPI Probes ...
-Done Post-Processing MPI Probes 
-Total Time Elapsed:  116.2602978508803062  seconds
- Application finished on Wed Jan 15 15:29:24 2025
+Setup Time Elapsed:  1.604211388592375442  seconds
+Solve Time Elapsed:  0.1111871753237210214  seconds

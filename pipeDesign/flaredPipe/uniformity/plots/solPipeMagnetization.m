@@ -23,7 +23,7 @@ for mur = murList
     magMax = max(magMag(pipeCenterIndices));
     magMin = min(magMag(pipeCenterIndices));
 
-    semilogy(data(:,pipeAxisColumnNumber), magMag, 'DisplayName', sprintf('\\chi = %.0f; \\DeltaM(%.2f%%)_{\\pm 0.5"}', mur, 100.0*(magMax-magMin)/((magMax+magMin)/2)))
+    semilogy(data(:,pipeAxisColumnNumber), magMag, 'DisplayName', sprintf('\\chi = %.0f; \\DeltaM(%.2f%%)_{\\pm 0.5"}', str2double(mur)-1, 100.0*(magMax-magMin)/((magMax+magMin)/2)))
     hold on
     % semilogy(averagedData(:,pipeAxisColumnNumber), abs(averagedData(:,5)), 'DisplayName', sprintf('\\chi = %.0f', mur))
     

@@ -24,7 +24,7 @@ for mur = murList
     hMax = max(hTotMag(pipeCenterIndices));
     hMin = min(hTotMag(pipeCenterIndices));
 
-    plot(ycoord, hTotMag, 'DisplayName', sprintf('\\chi = %.0f; \\DeltaH(%.2f%%)_{\\pm %0.1f"}', mur, 100.0*(hMax-hMin)/((hMax+hMin)/2), centerRegionRadius))
+    plot(ycoord, hTotMag, 'DisplayName', sprintf('\\chi = %.0f; \\DeltaH(%.2f%%)_{\\pm %0.1f"}', str2double(mur)-1, 100.0*(hMax-hMin)/((hMax+hMin)/2), centerRegionRadius))
     hold on
 
 end
@@ -32,7 +32,7 @@ end
 % Plot finalizations
 plot([-centerRegionRadius -centerRegionRadius],[0.0 35], '--k', 'HandleVisibility', 'off')
 plot([centerRegionRadius centerRegionRadius],[0.0 35], '--k', 'HandleVisibility', 'off')
-% xlim([-5.0 5.0])
+xlim([-8.0 8.0])
 grid on
 legend('Location', 'north')
 xlabel('Pipe Axis (in)')

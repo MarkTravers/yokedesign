@@ -1,5 +1,5 @@
-System log file opened at Fri Jan 17 17:08:28 2025
- Application started on Fri Jan 17 17:08:28 2025
+System log file opened at Thu Jan 30 14:02:56 2025
+ Application started on Thu Jan 30 14:02:56 2025
  GEMF library version: 3252 (CLEAN); Compiled on 2024/10/02 14:04:36; Run-Time Library = Multi-Threaded 
  Magstrom library version: 1526 (CLEAN); Compiled on 2025/01/07 11:55:52
  Intel(R) oneAPI Math Kernel Library Version 2021.4-Product Build 20210904 for Intel(R) 64 architecture applications
@@ -37,8 +37,7 @@ Reading in Materials...
 Done Reading in Materials.
 
 Reading in Backgrounds...
-	Background 1 of 2 ...Done.
-	Background 2 of 2 ...Done.
+	Background 1 of 1 ...Done.
 Done Reading in Backgrounds.
 
 Reading in Signatures...
@@ -49,11 +48,10 @@ Reading in Excitations...
 Done reading in Excitations.
 
 Reading in Probes...
-	Probe 1 of 5 ...Done.
-	Probe 2 of 5 ...Done.
-	Probe 3 of 5 ...Done.
-	Probe 4 of 5 ...Done.
-	Probe 5 of 5 ...Done.
+	Probe 1 of 4 ...Done.
+	Probe 2 of 4 ...Done.
+	Probe 3 of 4 ...Done.
+	Probe 4 of 4 ...Done.
 Done reading in Probes.
 
 Reading in Simulation Groups...
@@ -69,33 +67,33 @@ Reading in analysis specific input...
 Setting the adaptive integrator integration tolerance to 1e-05
 Done reading analysis specific input.
 Loading Mesh From File(s) ...
-Reading mesh file ./unvFiles/FlaredThinHollowPipe_3planeSym.unv took 0.0599208 .sec.
-Total mesh processing took 0.0599389 .sec.
+Reading mesh file ./unvFiles/FlaredThinHollowPipe.unv took 0.0728437 .sec.
+Total mesh processing took 0.0728571 .sec.
 Done loading Mesh File.
 
 Pre-Processing Probes ...
 Done Pre-Processing Probes 
 ******** END OF INPUT FILE ********
 
-IO Time Elapsed:  0.105986  seconds
+IO Time Elapsed:  0.0917708  seconds
  ******************************************************
 
  COMPUTING MESH STATISTICS FOR MESH(ES) 
-    ./unvFiles/FlaredThinHollowPipe_3planeSym.unv
+    ./unvFiles/FlaredThinHollowPipe.unv
 
   ****** ELEMENT COUNT ******
-    Number of Nodes    = 4275
-    Number of Vertices = 768
-    Number of Edges    = 1808
-    Number of Faces    = 1370
+    Number of Nodes    = 4980
+    Number of Vertices = 840
+    Number of Edges    = 2080
+    Number of Faces    = 1650
         Triangle faces     : 0
-        Quad faces         : 1370
+        Quad faces         : 1650
         Unrecognized faces : 0
-        Boundary     faces : 766
+        Boundary     faces : 840
         Isolated     faces : 0
-    Number of Volumes  = 329
+    Number of Volumes  = 410
         Tet   volumes        : 0
-        Hex   volumes        : 329
+        Hex   volumes        : 410
         Prism volumes        : 0
         Unrecognized volumes : 0
 
@@ -103,13 +101,13 @@ IO Time Elapsed:  0.105986  seconds
        Mesh has 0 coincident nodes.
 
   ****** MESH BOUNDS ******
-       Minimum bound (x,y,z) =  0 m   0 m   0 m
-       Maximum bound (x,y,z) =  0.1016 m   0.012 m   0.012 m
+       Minimum bound (x,y,z) =  -0.1016 m   -0.0119888 m   -0.0119888 m
+       Maximum bound (x,y,z) =  0.1016 m   0.0119888 m   0.0119888 m
 
   ****** EDGE LENGTH STATISTICS 2 ******
-       The minimum edge length is 0.00149999999999999851 m  for Edge with GEMF ID 729
-       The maximum edge length is 0.00300000000000000266 m  for Edge with GEMF ID 2332
-       The mean    edge length is 0.00214751740784433149 m 
+       The minimum edge length is 0.00149859999999999664 m  for Edge with GEMF ID 1846
+       The maximum edge length is 0.00753159897461684862 m  for Edge with GEMF ID 2608
+       The mean    edge length is 0.00487175591731175712 m 
 
   ****** DUPLICATE ELEMENT CHECK ******
        Mesh has 0 duplicate Vertex Topologies.
@@ -120,12 +118,12 @@ IO Time Elapsed:  0.105986  seconds
   ****** MESH VOLUME CHECK ******
        Total signed / unsigned mesh Tet   volume is 0 / 0 m^3 in 0 cells
        Total signed / unsigned mesh Prism volume is 0 / 0 m^3 in 0 cells
-       Total signed / unsigned mesh Hex   volume is 3.13261798512082057e-06 / 3.13261798512082057e-06 m^3 in 329 cells
-           Hex with minimum unsigned volume is GEMF ID# 256 with volume 6.59773980486287358e-09 m^3
-           Hex with maximum unsigned volume is GEMF ID# 244 with volume 1.55372082514503981e-08 m^3
-           Average unsigned hex volume is 9.52163521313319325e-09 m^3
+       Total signed / unsigned mesh Hex   volume is 2.43344769052412139e-05 / 2.43344769052412139e-05 m^3 in 410 cells
+           Hex with minimum unsigned volume is GEMF ID# 145 with volume 4.46098599159927435e-08 m^3
+           Hex with maximum unsigned volume is GEMF ID# 80 with volume 1.00323733008111588e-07 m^3
+           Average unsigned hex volume is 5.93523826957102767e-08 m^3
        Total signed / unsigned mesh Pyramid   volume is 0 / 0 m^3 in 0 cells
-       Total Mesh Volume is 3.13261798512082057e-06 m^3
+       Total Mesh Volume is 2.43344769052412139e-05 m^3
 
   ****** MESH VOLUME TOPOLOGY CONVEXITY CHECK (APPROXIMATE) ******
        All Volume elements appear to be convex.
@@ -137,37 +135,41 @@ IO Time Elapsed:  0.105986  seconds
            Total signed / unsigned mesh surface area is 0 / 0 m^2 in 0 cells
        MESH SURFACE AREA CHECK FOR EXTERIOR FACES 
            Total signed / unsigned mesh Tri   surface area is 0 / 0 m^2 in 0 cells
-           Total signed / unsigned mesh Quad  surface area is 0.003656808520332262627 / 0.003656808520332262627 m^2 in 766 cells
-               Quad with minimum unsigned surface area is GEMF ID# 3519 with surface area 2.976562500000009247e-06 m^2
-               Quad with maximum unsigned surface area is GEMF ID# 3403 with surface area 7.068546186136579614e-06 m^2
-               Average unsigned quad surface area is 4.773901462574755638e-06 m^2
-           Total signed / unsigned mesh surface area is 0.003656808520332262627 / 0.003656808520332262627 m^2 in 766 cells
+           Total signed / unsigned mesh Quad  surface area is 0.02581988305620070215 / 0.02581988305620070215 m^2 in 840 cells
+               Quad with minimum unsigned surface area is GEMF ID# 3042 with surface area 1.793462005474259833e-05 m^2
+               Quad with maximum unsigned surface area is GEMF ID# 1170 with surface area 3.826052278345115518e-05 m^2
+               Average unsigned quad surface area is 3.073795601928654966e-05 m^2
+           Total signed / unsigned mesh surface area is 0.02581988305620070215 / 0.02581988305620070215 m^2 in 840 cells
 
 
 
 GROUP NAMES
     MagneticMaterial
 
-    Mline
+    cellLine
+
+    coilRegion
+
+    deMagCells
 
 Initialize Nystrom DOFs ... DONE.
-System Source DOFs = 1974
-System Field DOFs = 1974
-System Volumes = 329
-Setup Time Elapsed:  0.08994911369518376887  seconds
-Excitation Vectors Time Elapsed:  0.03423524921527132392  seconds
-  # of 2D Self Evaluations         =  55427240
-  # of 3D Self Evaluations         =  24035212
-  # of 3D Non Self Evaluations     =  98290660
-  # of Volume Fn Evals             =  122325872
-  # of Volume Integration Domains  =  923344
-  # Surface Fn Evals               =  55427240
-  # of Surface Integration Domains =  1194928
-Fill Time Elapsed:  114.2870160583115648  seconds
-Current matrix solve took  0.5263233848672825843  seconds; Total matrix solve is  0.5263233848672825843  seconds; 
-Solve Time Elapsed:  0.5938658993400167674  seconds
-Probe Time Elapsed:  8.083300898957531899  seconds
+System Source DOFs = 2460
+System Field DOFs = 2460
+System Volumes = 410
+Setup Time Elapsed:  0.2206660436349920928  seconds
+Excitation Vectors Time Elapsed:  0.004940626764437183738  seconds
+  # of 2D Self Evaluations         =  64646360
+  # of 3D Self Evaluations         =  25933125
+  # of 3D Non Self Evaluations     =  155132900
+  # of Volume Fn Evals             =  181066025
+  # of Volume Integration Domains  =  1331275
+  # Surface Fn Evals               =  64646360
+  # of Surface Integration Domains =  1422460
+Fill Time Elapsed:  90.35247172093659174  seconds
+Current matrix solve took  0.2604379434051224962  seconds; Total matrix solve is  0.2604379434051224962  seconds; 
+Solve Time Elapsed:  0.2832325920462608337  seconds
+Probe Time Elapsed:  8.34836242810706608  seconds
 Post-Processing MPI Probes ...
 Done Post-Processing MPI Probes 
-Total Time Elapsed:  123.2145411255478393  seconds
- Application finished on Fri Jan 17 17:10:32 2025
+Total Time Elapsed:  99.31223135173786432  seconds
+ Application finished on Thu Jan 30 14:04:35 2025

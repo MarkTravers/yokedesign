@@ -6,16 +6,19 @@
    # Output job name ("none" for no job name)
    mur00002
 
+##### section: global units #######
+&units inch
+
 ##### section : mesh #####
    # Mesh file type (Universal,Genesis,Nystrom)
    Universal
 
    # Mesh file name
-   ./unvFiles/FlaredThinHollowPipe_3planeSym.unv
+   ./unvFiles/FlaredThinHollowPipe.unv
 
-   # Mesh Units (meter, cm, mm, micron, yard, foot, inc, mil, or "other XX")
+   # Mesh Units (meter, cm, mm, micron, yard, foot, inch, mil, or "other XX")
    #     If 'other', then  specify scale factor XX such that XX * 1 meter = MeshUnits
-   mm
+   inch
 
 ##### section : basis order #####
    # Minimum/Maximum Order of basis function
@@ -53,46 +56,16 @@
 
 ##### section : Background #####
    # Number of backgrounds
-   2
+   1
 
    # Background name
-   DefaultBackground_NOT
-   #DefaultBackground
+   DefaultBackground
       # Background type
       HomogeneousMedia
       # Group Name
       none
       # Material name
       DefaultMaterial
-
-   # Background name
-   DefaultBackground
-      # Background type
-      ImagePlaneHomoMedia
-  # Volume Group Name(s):
-     none
-  # Background Material Name:
-   DefaultMaterial
-  # Number of image planes
-    3
-  # image plane normal
-    x
-  # image plane type
-    pmc
-  # image plane offset
-    0.0
-  # image plane normal
-    y
-  # image plane type
-    pec
-  # image plane offset
-    0.0
-  # image plane normal
-    z
-  # image plane type
-    pec
-  # image plane offset
-    0.0
 
 ##### section : source signature #####
    # Number of source signatures
@@ -112,23 +85,23 @@
       # Excitation direction
       1.0 0.0 0.0
       # Excitation amplitude
-      1.0
+      20000.0
       # Field type (electric,magnetic)
       magnetic
 
 
 ##### section : probe #####
    # Number of probes
-   5
+   4
 
    # Probe name
-   Mline
+   cellLine
       # Probe type
       CurrentPolarization
       # Background name
       DefaultBackground
       #Group name
-      &1 Mline
+      &1 cellLine
       # Polarization current type
       magnetic
       # Grid Type ('SystemTestGrid', 'CellNodes', 'TestGrid'; 'TestGrid' requires a grid order)
@@ -138,7 +111,7 @@
       &option fields
 
    # Probe name
-   HRadialInside
+   HRadial
       # Probe type
       FieldStaticH
       # Background name
@@ -150,28 +123,10 @@
       # Point Type (Single, Line, Surface)
       Line 
       # Number of Points
-      90
+      201
       # Point List (x,y,z)
-      0.5416665e-3  0.0          0.0
-      0.5416665e-3  8.885999e-3  0.499027e-3
-
-   # Probe name
-   HRadialOutside
-      # Probe type
-      FieldStaticH
-      # Background name
-      DefaultBackground
-      # 'total' or 'scattered' field (scattered is always computed, if 'total' then both)
-      total
-      # Integration Error Tolerance
-      1.e-5
-      # Point Type (Single, Line, Surface)
-      Line 
-      # Number of Points
-      104
-      # Point List (x,y,z)
-      0.541667e-3  10.569226e-3  0.593555e-3
-      0.541667e-3  20.966963e-3  1.177479e-3
+      0.048781  -0.987688  -0.156435
+      0.048781  0.987688   0.156435
 
    # Probe name
    Haxial
@@ -186,10 +141,10 @@
       # Point Type (Single, Line, Surface)
       Line 
       # Number of Points
-      101
+      201
       # Point List (x,y,z)
-      -254e-3   0   0
-      254e-3    0   0
+      -5.0   0   0
+      5.0    0   0
 
    # Probe name
    VTKProbe
@@ -218,9 +173,9 @@
       # Excitation names
       StaticHFieldx
       # Number of Probes
-      5
+      4
       # Probe names
-      Mline  HRadialInside  HRadialOutside  Haxial  VTKProbe
+      cellLine  HRadial  Haxial  VTKProbe
 
 
 ##### section : boundary condition #####

@@ -3,7 +3,7 @@
    ./magstromOutput/
 
    # Output job name ("none" for no job name)
-   mur00002
+   mur01001
 
 ##### section: global units #######
 &units inch
@@ -60,7 +60,7 @@
       # Group name
       pipeSample
       # epsilon_r, mu_r
-      1.0 2.0
+      1.0 1001.0
 
 ##### section : Background #####
    # Number of backgrounds

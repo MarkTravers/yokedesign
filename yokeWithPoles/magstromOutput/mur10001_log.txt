@@ -80,15 +80,15 @@ Reading in analysis specific input...
 Setting the adaptive integrator integration tolerance to 1e-05
 Done reading analysis specific input.
 Loading Mesh From File(s) ...
-Reading mesh file ./unvFiles/yokeCollarPipe.unv took 1.33612 .sec.
-Total mesh processing took 1.33615 .sec.
+Reading mesh file ./unvFiles/yokeCollarPipe.unv took 1.2423 .sec.
+Total mesh processing took 1.24233 .sec.
 Done loading Mesh File.
 
 Pre-Processing Probes ...
 Done Pre-Processing Probes 
 ******** END OF INPUT FILE ********
 
-IO Time Elapsed:  1.65323  seconds
+IO Time Elapsed:  1.58589  seconds
  ******************************************************
 
  COMPUTING MESH STATISTICS FOR MESH(ES) 
@@ -148,11 +148,11 @@ IO Time Elapsed:  1.65323  seconds
            Total signed / unsigned mesh surface area is 0 / 0 m^2 in 0 cells
        MESH SURFACE AREA CHECK FOR EXTERIOR FACES 
            Total signed / unsigned mesh Tri   surface area is 0 / 0 m^2 in 0 cells
-           Total signed / unsigned mesh Quad  surface area is 0.1932151513598481529 / 0.1932151513598481529 m^2 in 7836 cells
+           Total signed / unsigned mesh Quad  surface area is 0.1932151513598482084 / 0.1932151513598482084 m^2 in 7836 cells
                Quad with minimum unsigned surface area is GEMF ID# 57740 with surface area 1.768315710715706098e-06 m^2
                Quad with maximum unsigned surface area is GEMF ID# 44535 with surface area 6.313209469405643389e-05 m^2
-               Average unsigned quad surface area is 2.465737000508526737e-05 m^2
-           Total signed / unsigned mesh surface area is 0.1932151513598481529 / 0.1932151513598481529 m^2 in 7836 cells
+               Average unsigned quad surface area is 2.465737000508527415e-05 m^2
+           Total signed / unsigned mesh surface area is 0.1932151513598482084 / 0.1932151513598482084 m^2 in 7836 cells
 
 
 
@@ -167,8 +167,8 @@ Initialize Nystrom DOFs ... DONE.
 System Source DOFs = 57120
 System Field DOFs = 57120
 System Volumes = 9520
-Setup Time Elapsed:  12.815897136926651  seconds
-Excitation Vectors Time Elapsed:  96.68618863436859101  seconds
+Setup Time Elapsed:  11.16079598641954362  seconds
+Excitation Vectors Time Elapsed:  95.03430508484598249  seconds
   # of 2D Self Evaluations         =  3024012420
   # of 3D Self Evaluations         =  1087950574
   # of 3D Non Self Evaluations     =  84056641264
@@ -176,11 +176,11 @@ Excitation Vectors Time Elapsed:  96.68618863436859101  seconds
   # of Volume Integration Domains  =  552551482
   # Surface Fn Evals               =  3024012420
   # of Surface Integration Domains =  62477226
-Fill Time Elapsed:  8168.258843454590533  seconds
-Current matrix solve took  1241.856047460169066  seconds; Total matrix solve is  1241.856047460169066  seconds; 
-Solve Time Elapsed:  1242.593605416768696  seconds
-Probe Time Elapsed:  26.66999831359134987  seconds
+Fill Time Elapsed:  8271.354685228085145  seconds
+Current matrix solve took  1143.280259824299719  seconds; Total matrix solve is  1143.280259824299719  seconds; 
+Solve Time Elapsed:  1143.767243074020371  seconds
+Probe Time Elapsed:  27.66265406442107633  seconds
 Post-Processing MPI Probes ...
 Done Post-Processing MPI Probes 
-Total Time Elapsed:  9549.142924589279573  seconds
- Application finished on Thu Jan 30 18:28:38 2025
+Total Time Elapsed:  9550.579118858440779  seconds
+ Application finished on Thu Jan 30 18:28:40 2025

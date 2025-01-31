@@ -388,10 +388,10 @@
       # Point Type (Single, Line, Surface)
       Line
       # Number of Points
-      100
+      201
       # Start, Stop (x,y,z)
-      0.0  -11.0    0.0
-      0.0  11.0    0.0
+      0.0  -6.0    0.0
+      0.0  6.0    0.0
 
    # Probe name
    HRadialPerpendicular
@@ -457,14 +457,14 @@
 
    # Use saved DOF file : no = do nothing, write = fill/solve normally, write dofs.txt file, 
    #                    : read = don't fill/solve, read dofs.txt file
-   write
+   read
 
 ######  section:  Non-linear solver (leave blank, if none) ####
    # non-linear solver type  (stepped, imi, fmi, or none):
    none
 
 # Control Flags
-$SET_NUM_THREADS_TO:19
+$SET_NUM_THREADS_TO:8
 $MESH_STATISTICS:FULL
 $ADAPTIVE_INTEGRATOR_MAX_SUBDOMAINS:4096
 $GEMF_ADAPTIVE_INTEGRATOR_ZERO_TOLERANCE:1e-10

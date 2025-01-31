@@ -3,7 +3,7 @@ close all
 
 %% Plot magnetization along pipe for varying X
 % List of susceptibilities to plot
-murList = ["00002", "00100", "01000", "10000"];
+murList = ["00002", "00101", "01001", "10001"];
 
 % Plot initialization
 pipeAxisColumnNumber = 2;
@@ -28,7 +28,7 @@ for mur = murList
     magMax = max(magMag(pipeCenterIndices));
     magMin = min(magMag(pipeCenterIndices));
 
-    semilogy(averagedData(:,pipeAxisColumnNumber), magMag, 'DisplayName', sprintf('\\chi = %.0f; \\DeltaM(%.2f%%)_{\\pm 0.5"}', mur, 100.0*(magMax-magMin)/((magMax+magMin)/2)))
+    semilogy(averagedData(:,pipeAxisColumnNumber), magMag, 'DisplayName', sprintf('\\chi = %.0f; \\DeltaM(%.2f%%)_{\\pm 0.5"}', str2double(mur)-1, 100.0*(magMax-magMin)/((magMax+magMin)/2)))
     hold on
     % semilogy(averagedData(:,pipeAxisColumnNumber), abs(averagedData(:,5)), 'DisplayName', sprintf('\\chi = %.0f', mur))
     
@@ -42,3 +42,5 @@ legend('Location', 'south')
 xlabel('Pipe Length (in)')
 ylabel('|\bfM\rm| (A/m)')
 title('Magnetization Uniformity in Center Region of Pipe')
+savefig('yokeMagnetization.fig')
+saveas(gcf, 'yokeMagnetization.png')

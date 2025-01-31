@@ -31,4 +31,5 @@ if __name__ == '__main__':
         cueArgsList.append(f'./{magstromInputCaseFN}')
 
     with Pool(processes=len(murList)) as simWorkerPool:
+    # with Pool(processes=1) as simWorkerPool:
         simWorkerPool.map(execute, cueArgsList)

@@ -228,7 +228,8 @@ def yokeWithPipe(xRadius, yRadius, cornerRadius, thickness, zThickness, pipeLeng
     meshSize = thickness/cellsPerThickness
     cubit.cmd('imprint volume all in block %d %d %d %d %d' % (yokeBlockID, pipeBlockID, collarBlockID, poleBlockID1, poleBlockID2))
     cubit.cmd('merge volume all in block %d %d %d %d %d' % (yokeBlockID, pipeBlockID, collarBlockID, poleBlockID1, poleBlockID2))
-    cubit.cmd('volume in block %d %d %d %d %d size %f' % (yokeBlockID, pipeBlockID, collarBlockID, poleBlockID1, poleBlockID2, meshSize))
+    cubit.cmd('volume in block %d %d %d %d size %f' % (yokeBlockID, collarBlockID, poleBlockID1, poleBlockID2, meshSize))
+    cubit.cmd('volume in block %d size %f' % (pipeBlockID, (pipeOR - pipeIR)/2.0))
     cubit.cmd('volume all in block %d %d %d %d %d scheme auto' % (yokeBlockID, pipeBlockID, collarBlockID, poleBlockID1, poleBlockID2))
     cubit.cmd('mesh volume all in block %d %d ' % (poleBlockID1, poleBlockID2))
     cubit.cmd('mesh volume all in block %d %d %d' % (yokeBlockID, pipeBlockID, collarBlockID))
@@ -377,6 +378,8 @@ resetCubitForEachCoil = False
 yokeWithPipe(xRadius, yRadius, cornerRadius, thickness, zThickness, pipeLength, pipeOR, pipeIR, yokeCollarGap, collarThickness, poleLength, poleRad1, poleRad2, poleDepth, yokePipeGap, pipeCoilGap, cellsPerThickness=5, unvFD='')
 # coilsOctagon(xRadius, yRadius, cornerRadius, thickness, zThickness, [0,1,2,5,6,7,8,9,12,13], coilGap, splitCoilOffset=pipeCoilGap+pipeOR, cellsPerThickness=5, unvFD='', resetCubitForEachCoil=resetCubitForEachCoil)
 #
+
+
 
 
 

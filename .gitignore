@@ -13,6 +13,8 @@
 /designStudies/pipeYokeGap/template/withoutGaps/*.unv
 /designStudies/pipeYokeGap/template/withoutGaps/*.vtk
 
+/yokeWithPoles/unvFiles/yokeCollarPipe_HighResPipe.unv
+
 /magstromOutput
 
 /venv

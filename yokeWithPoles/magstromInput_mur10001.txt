@@ -13,7 +13,7 @@
    Universal
 
    # Mesh file name
-   ./unvFiles/yokeCollarPipe.unv
+   ./unvFiles/yokeCollarPipe_HighResPipe.unv
 
    # Mesh units
    inch
@@ -457,14 +457,14 @@
 
    # Use saved DOF file : no = do nothing, write = fill/solve normally, write dofs.txt file, 
    #                    : read = don't fill/solve, read dofs.txt file
-   read
+   write
 
 ######  section:  Non-linear solver (leave blank, if none) ####
    # non-linear solver type  (stepped, imi, fmi, or none):
    none
 
 # Control Flags
-$SET_NUM_THREADS_TO:8
+$SET_NUM_THREADS_TO:44
 $MESH_STATISTICS:FULL
 $ADAPTIVE_INTEGRATOR_MAX_SUBDOMAINS:4096
 $GEMF_ADAPTIVE_INTEGRATOR_ZERO_TOLERANCE:1e-10

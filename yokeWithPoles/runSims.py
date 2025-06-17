@@ -9,7 +9,8 @@ def execute(magstromInputFN:str) -> None:
     subprocess.run(['C:/Users/travemar/ONR/magstrom/magstrom_application/x64/Release/magstrom_application.exe', magstromInputFN])
 
 if __name__ == '__main__':
-    murList = [2, 101, 1001, 10001]
+    # murList = [2, 101, 1001, 10001]
+    murList = [10001]
 
     # magstromExeFP = 'C:/Users/travemar/ONR/magstrom/magstrom_application/x64/Release/magstrom_application.exe'
     magstromInputTemplateFN = 'magstromInput_template.txt'
